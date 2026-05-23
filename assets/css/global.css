@@ -1,0 +1,71 @@
+/* Importa as definições de variáveis (cores, fontes, etc) para uso em todo o sistema */
+@import url('variables.css');
+/* Importa o reset para garantir que o site tenha a mesma aparência em todos os navegadores */
+@import url('reset.css');
+
+/* Estilização base do corpo da página */
+body {
+    /* Define a fonte secundária (Open Sans) como padrão para leitura de textos longos */
+    font-family: var(--font-secondary);
+    /* Aplica a cor cinza escura (Charcoal) definida nas variáveis */
+    color: var(--charcoal);
+    /* Define um espaçamento entre linhas confortável para leitura (1.6) */
+    line-height: 1.6;
+    /* Define a cor de fundo padrão como branco */
+    background-color: var(--white);
+}
+
+/* Estilização padronizada para todos os níveis de títulos */
+h1, h2, h3, h4, h5, h6 {
+    /* Usa a fonte primária (Montserrat) que é mais moderna e impactante para títulos */
+    font-family: var(--font-primary);
+    /* Define o peso da fonte como negrito (700) */
+    font-weight: 700;
+}
+
+/* Classe utilitária para centralizar o conteúdo e limitar a largura máxima */
+.container {
+    /* Garante que o elemento ocupe 100% da largura disponível */
+    width: 100%;
+    /* Limita a largura ao valor da variável --wide (geralmente 1200px) */
+    max-width: var(--wide);
+    /* Centraliza o container horizontalmente na tela */
+    margin: 0 auto;
+    /* Adiciona um preenchimento lateral para o conteúdo não encostar na borda em telas pequenas */
+    padding: 0 var(--spacing-sm);
+}
+
+/* Estilização base para botões do portal */
+.btn {
+    /* Permite definir largura/altura mantendo o comportamento de fluxo de texto */
+    display: inline-block;
+    /* Define o espaçamento interno do botão */
+    padding: 0.75rem 1.5rem;
+    /* Arredonda levemente os cantos do botão */
+    border-radius: 4px;
+    /* Deixa o texto do botão em seminegrito */
+    font-weight: 600;
+    /* Adiciona uma transição suave ao aplicar o efeito de brilho no hover */
+    transition: filter 0.2s ease;
+    /* Garante que o texto fique centralizado dentro do botão */
+    text-align: center;
+}
+
+/* Efeito visual ao passar o mouse sobre qualquer botão */
+.btn:hover {
+    /* Escurece levemente a cor do botão para indicar interatividade */
+    filter: brightness(0.9);
+}
+
+/* Estilo para botões principais (Verde Manaus) */
+.btn-primary {
+    background-color: var(--verde-manaus);
+    color: var(--white);
+}
+
+/* Estilo para botões de destaque/ação (Laranja Sunset) */
+.btn-accent {
+    background-color: var(--laranja-sunset);
+    color: var(--white);
+}
+

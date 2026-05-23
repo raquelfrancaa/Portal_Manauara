@@ -1,0 +1,118 @@
+/* Estilização do rodapé principal (Footer) */
+#main-footer {
+    /* Define o fundo como cinza escuro (Charcoal) para contraste com o conteúdo claro */
+    background-color: var(--charcoal);
+    /* Define a cor padrão dos textos internos como branco */
+    color: var(--white);
+    /* Adiciona um preenchimento generoso no topo e na base (48px) */
+    padding: var(--spacing-xl) 0;
+    /* Garante um espaço de separação da última seção da página */
+    margin-top: var(--spacing-xl);
+}
+
+/* Sistema de colunas do rodapé usando CSS Grid */
+.footer-grid {
+    /* Divide o rodapé em 4 colunas de larguras iguais */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Espaçamento grande entre as colunas */
+    gap: var(--spacing-lg);
+    /* Margem inferior para separar do copyright na base */
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Estilo dos títulos de cada coluna no rodapé */
+.footer-column h3 {
+    /* Usa a cor laranja de destaque para os títulos das seções */
+    color: var(--laranja-sunset);
+    /* Margem abaixo do título para separar da lista de links */
+    margin-bottom: var(--spacing-md);
+    /* Tamanho de fonte intermediário */
+    font-size: 1.1rem;
+    /* Deixa os títulos em maiúsculas para manter o padrão visual */
+    text-transform: uppercase;
+}
+
+/* Estilo para cada item da lista de links no rodapé */
+.footer-links li {
+    /* Adiciona um pequeno espaço entre cada link da lista */
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Estilo padrão para os links no rodapé */
+.footer-links a {
+    /* Usa a cor cinza médio para links menos importantes (discretos) */
+    color: var(--gray-medium);
+    /* Adiciona uma transição suave na mudança de cor */
+    transition: color 0.2s;
+}
+
+/* Efeito ao passar o mouse (hover) nos links do rodapé */
+.footer-links a:hover {
+    /* Muda a cor do link para branco puro ao interagir */
+    color: var(--white);
+}
+
+/* Área inferior de copyright e créditos */
+.footer-bottom {
+    /* Adiciona uma linha divisória fina acima dos créditos */
+    border-top: 1px solid #334155;
+    /* Preenchimento no topo da faixa final */
+    padding-top: var(--spacing-md);
+    /* Centraliza o texto do copyright */
+    text-align: center;
+    /* Usa cor cinza médio para o texto ser discreto */
+    color: var(--gray-medium);
+    /* Reduz o tamanho da fonte */
+    font-size: 0.9rem;
+}
+
+/* Container para alinhar os ícones de redes sociais no rodapé */
+.social-links {
+    /* Organiza os círculos em linha */
+    display: flex;
+    /* Espaço entre os ícones sociais */
+    gap: 15px;
+    /* Margem superior para separar do texto acima */
+    margin-top: var(--spacing-sm);
+}
+
+/* Estilo para os ícones circulares de redes sociais */
+.social-icon {
+    /* Define largura e altura iguais para formar um círculo */
+    width: 32px;
+    height: 32px;
+    /* Aplica a cor verde de fundo característica */
+    background-color: var(--verde-manaus);
+    /* Usa flexbox para centralizar o conteúdo do ícone dentro do círculo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Arredonda as bordas 50% para criar o formato circular */
+    border-radius: 50%;
+    /* Transição suave ao mudar a cor de fundo */
+    transition: background 0.2s;
+}
+
+/* Efeito ao passar o mouse no ícone social */
+.social-icon:hover {
+    /* Muda o fundo para laranja ao interagir */
+    background-color: var(--laranja-sunset);
+}
+
+/* Regra de responsividade para tablets (Abaixo de 768px) */
+@media (max-width: 768px) {
+    .footer-grid {
+        /* Muda de 4 colunas para 2 colunas para não apertar o conteúdo */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Regra de responsividade para celulares pequenos (Abaixo de 480px) */
+@media (max-width: 480px) {
+    .footer-grid {
+        /* Transforma em uma única coluna vertical */
+        grid-template-columns: 1fr;
+    }
+}
+

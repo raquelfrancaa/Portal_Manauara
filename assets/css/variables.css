@@ -1,0 +1,27 @@
+:root {
+    /* --- Paleta de Cores Principais --- */
+    --verde-manaus: #005448;    /* Verde institucional (Representa a floresta/identidade) */
+    --laranja-sunset: #EC6907;   /* Laranja vibrante (Usado para botões, links e chamadas) */
+    --charcoal: #1E293B;         /* Cinza escuro azulado (Cor padrão para textos) */
+    --white: #FFFFFF;            /* Branco absoluto (Fundos e contrastes) */
+    --gray-light: #F1F5F9;       /* Cinza claríssimo (Fundos de cards e seções) */
+    --gray-medium: #94A3B8;      /* Cinza médio (Subtítulos e ícones desativados) */
+
+    /* --- Sistema de Tipografia --- */
+    --font-primary: 'Montserrat', sans-serif;   /* Fonte para Títulos e Manchetes (Moderna) */
+    --font-secondary: 'Open Sans', sans-serif; /* Fonte para Corpo de Texto (Leitura fácil) */
+
+    /* --- Escala de Espaçamento Padronizada --- */
+    --spacing-xs: 0.5rem;   /* 8px - Espaços internos pequenos */
+    --spacing-sm: 1rem;     /* 16px - Padding padrão de elementos */
+    --spacing-md: 1.5rem;   /* 24px - Margens entre parágrafos e cards */
+    --spacing-lg: 2rem;     /* 32px - Espaçamento entre seções */
+    --spacing-xl: 3rem;     /* 48px - Espaçamento vertical de topo/rodapé */
+
+    /* --- Breakpoints para Responsividade (Mobile-First) --- */
+    --mobile: 480px;    /* Smartphones pequenos */
+    --tablet: 768px;    /* Tablets e telas médias */
+    --desktop: 1024px;  /* Laptops e monitores padrão */
+    --wide: 1200px;     /* Telas grandes (Ultrawide) */
+}
+

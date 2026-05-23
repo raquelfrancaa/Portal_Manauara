@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<!-- Define o tipo do documento como HTML5 e o idioma como Português do Brasil -->
+<html lang="pt-br">
+<head>
+    <!-- Define a codificação de caracteres para suportar acentos e símbolos -->
+    <meta charset="UTF-8">
+    <!-- Configura a visualização para dispositivos móveis (Responsividade) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título da página que aparece na aba do navegador -->
+    <title>Portal Manauara - Notícias de Manaus e Amazonas</title>
+    
+    <!-- Meta tags para SEO (Otimização para buscadores) -->
+    <meta name="description" content="O portal de notícias mais completo de Manaus. Cotidiano, política, guia de lazer e cultura no Amazonas.">
+    <meta name="keywords" content="Manaus, Amazonas, Notícias, Rio Negro, Teatro Amazonas, Barezão, Guia Manaus">
+    
+    <!-- Configurações para compartilhamento em redes sociais (Open Graph) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://portalmanauara.com.br/">
+    <meta property="og:title" content="Portal Manauara - Notícias de Manaus e Amazonas">
+    <meta property="og:description" content="O portal de notícias mais completo de Manaus. Cotidiano, política, guia de lazer e cultura no Amazonas.">
+    <meta property="og:image" content="https://portalmanauara.com.br/assets/img/og-image.jpg">
+
+    <!-- Dados estruturados Schema.org para ajudar o Google a entender que este é um site de notícias -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsMediaOrganization",
+      "name": "Portal Manauara",
+      "url": "https://portalmanauara.com.br/",
+      "logo": "https://portalmanauara.com.br/assets/img/logo.png",
+      "sameAs": [
+        "https://facebook.com/portalmanauara",
+        "https://instagram.com/portalmanauara"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Manaus",
+        "addressRegion": "AM",
+        "addressCountry": "BR"
+      }
+    }
+    </script>
+
+    <!-- Importação de fontes do Google Fonts (Montserrat para títulos e Open Sans para textos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Links para os arquivos de estilo CSS externos (Organização Modular) -->
+    <link rel="stylesheet" href="assets/css/variables.css"> <!-- Variáveis de cores e tamanhos -->
+    <link rel="stylesheet" href="assets/css/reset.css">     <!-- Reseta estilos padrão dos navegadores -->
+    <link rel="stylesheet" href="assets/css/global.css">    <!-- Estilos aplicados em todo o site -->
+    <link rel="stylesheet" href="assets/css/header.css">    <!-- Estilos específicos do cabeçalho -->
+    <link rel="stylesheet" href="assets/css/home.css">      <!-- Estilos exclusivos da página inicial -->
+    <link rel="stylesheet" href="assets/css/footer.css">    <!-- Estilos específicos do rodapé -->
+</head>
+<body>
+
+    <!-- Início do Cabeçalho Principal -->
+    <header id="main-header">
+        <!-- Barra superior com informações úteis (Clima e Rio) -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="utility-info">
+                    <!-- Widgets que serão preenchidos via JavaScript (api.js / main.js) -->
+                    <span id="weather-widget">Carregando clima...</span>
+                    <span id="river-level-widget">Rio Negro: Carregando...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegação Principal -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Logotipo do Portal -->
+                    <a href="index.html" class="logo">
+                        <h1>Portal <span>Manauara</span></h1>
+                    </a>
+                    
+                    <!-- Menu de Editorias -->
+                    <ul class="nav-menu">
+                        <li><a href="pages/categoria.html">Cotidiano</a></li>
+                        <li><a href="#">Política</a></li>
+                        <li><a href="#">Guia Manaus</a></li>
+                        <li><a href="#">Cultura</a></li>
+                        <li><a href="#">Turismo</a></li>
+                    </ul>
+
+                    <!-- Ações à direita (Busca, Botão de WhatsApp e Menu Mobile) -->
+                    <div class="nav-actions">
+                        <!-- Formulário de busca rápida -->
+                        <div class="search-container">
+                            <input type="text" id="search-input" placeholder="Buscar notícias...">
+                            <button id="search-btn">🔍</button>
+                        </div>
+                        <!-- Botão de destaque para o canal de denúncias -->
+                        <a href="https://wa.me/5592999999999" target="_blank" class="btn btn-accent btn-sm">Repórter Manauara</a>
+                        <!-- Botão que aparece apenas em celulares para abrir o menu -->
+                        <button class="mobile-toggle" aria-label="Abrir Menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal da Página -->
+    <main class="container">
+        
+        <!-- Seção Hero: Área de maior destaque da Home -->
+        <section id="hero" class="hero-grid">
+            <!-- Artigo de Manchete Principal -->
+            <article class="main-feature">
+                <a href="pages/noticia-interna.html?id=eleicoes-2026" style="text-decoration: none; color: inherit;">
+                    <div class="category">Eleições 2026</div>
+                    <h2>A Disputa pelo Governo do Amazonas Toma Forma</h2>
+                    <p>Faltando menos de cinco meses para o pleito, veja quem são os principais pré-candidatos que lideram a corrida pelo Palácio Rio Negro.</p>
+                </a>
+            </article>
+            
+            <!-- Barra lateral de Notícias Rápidas (Plantão) -->
+            <aside class="sidebar-news">
+                <h3>Plantão</h3>
+                <ul class="news-list">
+                    <li><a href="pages/noticia-interna.html?id=transito-constantino">Trânsito intenso na Constantino Nery após acidente...</a></li>
+                    <li><a href="#">Previsão de chuva forte para as próximas horas...</a></li>
+                    <li><a href="#">Novo festival gastronômico agita o Centro Histórico...</a></li>
+                </ul>
+            </aside>
+        </section>
+
+        <!-- Seção de Agenda Cultural com filtros interativos -->
+        <section id="agenda" class="news-section">
+            <h2 class="section-title">Agenda Cultural</h2>
+            <!-- Botões de filtro controlados por JS (main.js) -->
+            <div class="agenda-filters">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="teatro">Teatro</button>
+                <button class="filter-btn" data-filter="shows">Shows</button>
+                <button class="filter-btn" data-filter="gastronomia">Gastronomia</button>
+            </div>
+            <!-- Grid que organiza os cards de eventos -->
+            <div class="agenda-grid" id="agenda-container">
+                <!-- Card de Teatro (Ópera) -->
+                <div class="agenda-card" data-category="teatro">
+                    <a href="pages/noticia-interna.html?id=opera-teatro" style="display: flex; text-decoration: none; color: inherit; width: 100%;">
+                        <div class="agenda-date">
+                            <span class="day">15</span>
+                            <span class="month">MAI</span>
+                        </div>
+                        <div class="agenda-info">
+                            <h4>Ópera no Teatro Amazonas</h4>
+                            <p>📍 Largo de São Sebastião</p>
+                            <span class="badge teatro">Teatro</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card de Shows (Porão) -->
+                <div class="agenda-card" data-category="shows">
+                    <a href="pages/noticia-interna.html?id=porao-alemao" style="display: flex; text-decoration: none; color: inherit; width: 100%;">
+                        <div class="agenda-date">
+                            <span class="day">20</span>
+                            <span class="month">MAI</span>
+                        </div>
+                        <div class="agenda-info">
+                            <h4>Show: Porão do Alemão Rock Bar</h4>
+                            <p>📍 Estrada da Ponta Negra</p>
+                            <span class="badge shows">Shows</span>
+                        </div>
+                    </a>
+                </div>
+                <!-- Card de Gastronomia (Tambaqui) -->
+                <div class="agenda-card" data-category="gastronomia">
+                    <a href="pages/noticia-interna.html?id=circuito-tambaqui" style="display: flex; text-decoration: none; color: inherit; width: 100%;">
+                        <div class="agenda-date">
+                            <span class="day">22</span>
+                            <span class="month">MAI</span>
+                        </div>
+                        <div class="agenda-info">
+                            <h4>Circuito do Tambaqui</h4>
+                            <p>📍 Mercado Adolpho Lisboa</p>
+                            <span class="badge gastronomia">Gastronomia</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Notícias de Cotidiano -->
+        <section id="cotidiano" class="news-section">
+            <h2 class="section-title">Cotidiano</h2>
+            <div class="news-grid">
+                <!-- Card de Notícia Dinâmica (Obras) -->
+                <article class="news-card">
+                    <a href="pages/noticia-interna.html?id=obras-jorge-teixeira">
+                        <div class="card-img">
+                            <img src="assets/img/Obra_Bairro_Jorge_Teixeira_600_X_400.png" alt="Obras no Jorge Teixeira">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">Bairros</span>
+                            <h3>Obras de revitalização avançam no bairro Jorge Teixeira</h3>
+                            <p>Prefeitura anuncia nova etapa de asfalto em áreas críticas da Zona Leste.</p>
+                        </div>
+                    </a>
+                </article>
+                <!-- Card de Notícia Dinâmica (Segurança) -->
+                <article class="news-card">
+                    <a href="pages/noticia-interna.html?id=policia-centro">
+                        <div class="card-img">
+                            <img src="assets/img/Policia_patrulhamento_600_X_400.png" alt="Policiamento no Centro">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">Segurança</span>
+                            <h3>Polícia reforça patrulhamento no Centro de Manaus</h3>
+                            <p>Operação visa diminuir pequenos furtos durante horário comercial.</p>
+                        </div>
+                    </a>
+                </article>
+                <!-- Card de Notícia Dinâmica (Saúde) -->
+                <article class="news-card">
+                    <a href="pages/noticia-interna.html?id=vacinacao-manaus">
+                        <div class="card-img">
+                            <img src="assets/img/Campanha_Vacinacao_Manaus_600_X_400.png" alt="Vacinação em Manaus">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-category">Saúde</span>
+                            <h3>Campanha de vacinação atinge meta em Manaus</h3>
+                            <p>Dados da Semsa mostram grande adesão da população no último final de semana.</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Banner de Newsletter (Inscrição) -->
+        <section class="newsletter-banner">
+            <div class="newsletter-content">
+                <h2>Café com Tucumã</h2>
+                <p>Receba as notícias mais importantes de Manaus todas as manhãs no seu e-mail.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Seu melhor e-mail" required>
+                    <button type="submit" class="btn btn-primary">Inscrever-se</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Divisão horizontal para outras editorias -->
+        <div class="horizontal-split">
+            <!-- Seção de Política -->
+            <section id="politica" class="split-section">
+                <h2 class="section-title">Política</h2>
+                <ul class="list-news-minimal">
+                    <li><a href="pages/noticia-interna.html?id=plano-diretor">CMM debate novo plano diretor de Manaus nesta terça</a></li>
+                    <li><a href="#">Governo do Estado anuncia investimentos em infraestrutura</a></li>
+                    <li><a href="#">Deputados aprovam lei de incentivo à cultura local</a></li>
+                </ul>
+            </section>
+            <!-- Seção de Guia Manaus (Lazer) -->
+            <section id="guia-manaus" class="split-section">
+                <h2 class="section-title">Guia Manaus</h2>
+                <ul class="list-news-minimal">
+                    <li><a href="pages/noticia-interna.html?id=flutuantes-taruma">5 Melhores flutuantes para visitar no Tarumã</a></li>
+                    <li><a href="pages/noticia-interna.html?id=porao-alemao">Show: Porão do Alemão Rock Bar</a></li>
+                    <li><a href="#">Roteiro gastronômico: Onde comer o melhor X-Caboquinho</a></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- Rodapé Institucional -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Coluna: Sobre Nós -->
+                <div class="footer-column">
+                    <h3>Sobre Nós</h3>
+                    <p>O Portal Manauara é a sua fonte diária de notícias sobre Manaus e o Amazonas, focando em utilidade pública e cultura local.</p>
+                    <a href="pages/quem-somos.html" style="color: var(--laranja-sunset); font-weight: bold; text-decoration: none;">Saiba mais &rarr;</a>
+                </div>
+                <!-- Coluna: Editorias -->
+                <div class="footer-column">
+                    <h3>Editorias</h3>
+                    <ul class="footer-links">
+                        <li><a href="pages/categoria.html">Cotidiano</a></li>
+                        <li><a href="#">Política</a></li>
+                        <li><a href="#">Guia Manaus</a></li>
+                        <li><a href="#">Cultura</a></li>
+                        <li><a href="pages/contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <!-- Coluna: Utilidade -->
+                <div class="footer-column">
+                    <h3>Utilidade</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Previsão do Tempo</a></li>
+                        <li><a href="#">Nível do Rio</a></li>
+                        <li><a href="#">Trânsito</a></li>
+                        <li><a href="#">Telefones Úteis</a></li>
+                    </ul>
+                </div>
+                <!-- Coluna: Redes Sociais -->
+                <div class="footer-column">
+                    <h3>Siga-nos</h3>
+                    <div class="social-links">
+                        <a href="https://instagram.com" target="_blank" class="social-icon" aria-label="Instagram">IG</a>
+                        <a href="https://facebook.com" target="_blank" class="social-icon" aria-label="Facebook">FB</a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon" aria-label="Twitter">TW</a>
+                        <a href="https://wa.me/5592999999999" target="_blank" class="social-icon" aria-label="WhatsApp">WA</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Barra de copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portal Manauara. Todos os direitos reservados. Feito com ❤️ em Manaus.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Importação dos Scripts JavaScript -->
+    <script src="assets/js/api.js"></script>   <!-- Comunicação com APIs externas -->
+    <script src="assets/js/main.js"></script>  <!-- Lógica principal da Home -->
+    <script src="assets/js/menu.js"></script>  <!-- Controle do menu mobile -->
+</body>
+</html>
+

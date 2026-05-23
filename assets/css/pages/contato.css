@@ -1,0 +1,135 @@
+/* pages/contato.css - Estilos específicos para a página de Fale Conosco */
+
+/* Container que organiza as informações e o formulário de contato */
+.contact-container {
+    /* Limita a largura máxima para manter a legibilidade */
+    max-width: 900px;
+    /* Centraliza o container e aplica margem vertical grande */
+    margin: var(--spacing-xl) auto;
+    /* Divide o layout em duas colunas iguais (Desktop) */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Espaço grande entre as duas colunas */
+    gap: var(--spacing-xl);
+}
+
+/* Título principal da página de contato */
+.contact-info h1 {
+    /* Fonte grande */
+    font-size: 2.5rem;
+    /* Cor verde institucional */
+    color: var(--verde-manaus);
+    /* Margem abaixo do título */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Texto descritivo da página de contato */
+.contact-info p {
+    /* Margem na base */
+    margin-bottom: var(--spacing-md);
+    /* Tamanho de fonte levemente maior para facilitar leitura */
+    font-size: 1.1rem;
+    /* Altura da linha confortável */
+    line-height: 1.6;
+}
+
+/* Cada bloco de informação (E-mail, Tel, Endereço) */
+.info-item {
+    /* Espaço entre os blocos */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Rótulo da informação (ex: 'Redação', 'Comercial') */
+.info-item h3 {
+    /* Cor laranja de destaque */
+    color: var(--laranja-sunset);
+    /* Pequeno espaço abaixo do rótulo */
+    margin-bottom: 5px;
+}
+
+/* Caixa do formulário de contato */
+.contact-form {
+    /* Fundo azulado muito claro */
+    background: #f8fafc;
+    /* Preenchimento interno */
+    padding: var(--spacing-lg);
+    /* Arredonda os cantos da caixa */
+    border-radius: 12px;
+    /* Aplica uma sombra leve para efeito de elevação (card) */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Cada grupo de campo (Label + Input) */
+.form-group {
+    /* Espaço entre os campos do formulário */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Rótulo acima dos campos de entrada */
+.form-group label {
+    /* Garante que o rótulo ocupe sua própria linha */
+    display: block;
+    /* Espaço entre o rótulo e o campo */
+    margin-bottom: 5px;
+    /* Texto em negrito */
+    font-weight: 600;
+}
+
+/* Estilização dos campos de texto (input) e área de mensagem (textarea) */
+.form-group input, .form-group textarea {
+    /* Faz o campo ocupar 100% da largura da caixa pai */
+    width: 100%;
+    /* Preenchimento interno para o texto não colar nas bordas */
+    padding: 12px;
+    /* Borda fina cinza */
+    border: 1px solid #cbd5e1;
+    /* Arredonda os cantos dos campos */
+    border-radius: 6px;
+    /* Garante que usem a mesma fonte do site */
+    font-family: inherit;
+}
+
+/* Estilo específico para a área de mensagem */
+.form-group textarea {
+    /* Altura inicial maior para textos longos */
+    height: 150px;
+    /* Permite ao usuário redimensionar apenas na vertical */
+    resize: vertical;
+}
+
+/* Botão de envio do formulário */
+.btn-submit {
+    /* Faz o botão ocupar toda a largura da caixa do formulário */
+    width: 100%;
+    /* Preenchimento interno maior */
+    padding: 14px;
+    /* Cor de fundo verde institucional */
+    background-color: var(--verde-manaus);
+    /* Cor do texto branca */
+    color: white;
+    /* Remove a borda padrão do sistema */
+    border: none;
+    /* Arredonda os cantos */
+    border-radius: 6px;
+    /* Texto em negrito */
+    font-weight: 700;
+    /* Muda o cursor para mãozinha */
+    cursor: pointer;
+    /* Adiciona transição suave para o efeito de hover */
+    transition: background 0.3s;
+}
+
+/* Efeito ao passar o mouse no botão de envio */
+.btn-submit:hover {
+    /* Escurece levemente o verde */
+    background-color: #00423a;
+}
+
+/* Responsividade para telas de celulares */
+@media (max-width: 768px) {
+    /* Muda o layout de duas colunas para uma única coluna vertical */
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+

@@ -1,0 +1,54 @@
+/* --- Reset de Estilos Básico --- */
+
+/* O seletor universal '*' aplica as regras a absolutamente todos os elementos da página */
+* {
+    /* Remove as margens externas padrão que os navegadores adicionam */
+    margin: 0;
+    /* Remove os preenchimentos internos padrão */
+    padding: 0;
+    /* Faz com que bordas e paddings sejam calculados dentro da largura definida (evita que elementos 'estourem') */
+    box-sizing: border-box;
+}
+
+/* Melhorias de renderização de texto para navegadores específicos */
+body {
+    /* Melhora a suavização da fonte em navegadores baseados em Webkit (Chrome, Safari) */
+    -webkit-font-smoothing: antialiased;
+    /* Melhora a suavização da fonte no Firefox para MacOS */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reset para Imagens */
+img {
+    /* Garante que imagens nunca ultrapassem a largura do seu container pai */
+    max-width: 100%;
+    /* Remove espaços vazios indesejados abaixo da imagem (comportamento inline padrão) */
+    display: block;
+}
+
+/* Reset para Listas */
+ul {
+    /* Remove os 'pontinhos' (bullets) padrão das listas não ordenadas */
+    list-style: none;
+}
+
+/* Reset para Links */
+a {
+    /* Remove o sublinhado padrão dos links */
+    text-decoration: none;
+    /* Faz o link herdar a cor do texto do elemento pai em vez do azul padrão */
+    color: inherit;
+}
+
+/* Reset para Botões */
+button {
+    /* Garante que o cursor mude para a 'mãozinha' ao passar o mouse */
+    cursor: pointer;
+    /* Remove a borda padrão do sistema */
+    border: none;
+    /* Remove a cor de fundo padrão do sistema */
+    background: none;
+    /* Garante que o botão use a mesma fonte do resto do site */
+    font-family: inherit;
+}
+

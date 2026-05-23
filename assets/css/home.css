@@ -1,0 +1,466 @@
+/* Configuração da grade (grid) da seção principal (Hero) na página inicial */
+.hero-grid {
+    /* Define o container como um grid flexível */
+    display: grid;
+    /* Divide o layout em duas colunas: a principal ocupa 2 partes e a lateral 1 parte */
+    grid-template-columns: 2fr 1fr;
+    /* Define o espaçamento entre as colunas conforme a variável de escala grande */
+    gap: var(--spacing-lg);
+    /* Adiciona uma margem no topo para separar do cabeçalho */
+    margin-top: var(--spacing-lg);
+}
+
+/* Estilização da área da notícia de maior destaque (Main Feature) */
+.main-feature {
+    /* Necessário para posicionar elementos filhos de forma absoluta se necessário */
+    position: relative;
+    /* Define uma altura fixa para o destaque principal */
+    height: 450px;
+    /* Aplica um degradê escuro sobre a imagem para garantir a legibilidade do texto branco */
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('../img/hero-placeholder.webp');
+    /* Faz a imagem de fundo cobrir todo o container sem distorcer */
+    background-size: cover;
+    /* Centraliza a imagem de fundo */
+    background-position: center;
+    /* Arredonda os cantos da caixa de destaque */
+    border-radius: 8px;
+    /* Organiza o conteúdo interno usando flexbox */
+    display: flex;
+    /* Alinha o texto em coluna (verticalmente) */
+    flex-direction: column;
+    /* Empurra todo o conteúdo para a base (final) da imagem */
+    justify-content: flex-end;
+    /* Adiciona preenchimento interno para o texto não colar nas bordas */
+    padding: var(--spacing-lg);
+    /* Define a cor padrão do texto como branco */
+    color: var(--white);
+}
+
+/* Estilo da etiqueta de categoria sobre a imagem de destaque */
+.main-feature .category {
+    /* Aplica a cor laranja vibrante no fundo */
+    background-color: var(--laranja-sunset);
+    /* Define o preenchimento interno da etiqueta */
+    padding: 4px 12px;
+    /* Define um tamanho de fonte menor e peso negrito */
+    font-size: 0.8rem;
+    font-weight: 700;
+    /* Transforma o texto em letras maiúsculas */
+    text-transform: uppercase;
+    /* Faz a largura da etiqueta se ajustar ao conteúdo */
+    width: fit-content;
+    /* Espaço abaixo da etiqueta para o título */
+    margin-bottom: var(--spacing-sm);
+    /* Arredonda levemente os cantos */
+    border-radius: 4px;
+}
+
+/* Estilização do título principal (Manchete) do destaque */
+.main-feature h2 {
+    /* Fonte grande para chamar atenção */
+    font-size: 2.5rem;
+    /* Define o espaçamento entre linhas do título */
+    line-height: 1.2;
+    /* Margem na base para separar do subtítulo ou borda */
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Barra lateral de notícias rápidas (Plantão) */
+.sidebar-news {
+    /* Define uma cor de fundo cinza bem clara para destacar a lateral */
+    background-color: var(--gray-light);
+    /* Adiciona preenchimento interno */
+    padding: var(--spacing-md);
+    /* Arredonda os cantos da barra lateral */
+    border-radius: 8px;
+}
+
+/* Título da seção de plantão na barra lateral */
+.sidebar-news h3 {
+    /* Adiciona uma linha verde na base do título */
+    border-bottom: 2px solid var(--verde-manaus);
+    /* Espaço entre o texto e a linha inferior */
+    padding-bottom: var(--spacing-xs);
+    /* Espaço abaixo do título antes da lista */
+    margin-bottom: var(--spacing-md);
+    /* Transforma o título em maiúsculas */
+    text-transform: uppercase;
+    /* Tamanho de fonte intermediário e cor institucional */
+    font-size: 1.1rem;
+    color: var(--verde-manaus);
+}
+
+/* Itens individuais da lista de notícias laterais */
+.news-list li {
+    /* Espaçamento interno na base de cada notícia */
+    padding-bottom: var(--spacing-sm);
+    /* Margem externa na base */
+    margin-bottom: var(--spacing-sm);
+    /* Adiciona uma linha divisória discreta entre as notícias */
+    border-bottom: 1px solid var(--gray-medium);
+}
+
+/* Remove a linha divisória do último item da lista para não sobrar espaço */
+.news-list li:last-child {
+    border-bottom: none;
+}
+
+/* Estilização dos links das notícias do plantão */
+.news-list a {
+    /* Define peso de fonte seminegrito */
+    font-weight: 600;
+    /* Adiciona uma transição suave para efeitos de cor */
+    transition: color 0.2s;
+}
+
+/* Efeito visual ao passar o mouse nos links da lateral */
+.news-list a:hover {
+    /* Muda a cor para o laranja de destaque */
+    color: var(--laranja-sunset);
+}
+
+/* --- Configuração das Seções de Notícias (Cotidiano, Política, etc) --- */
+
+/* Estilo geral de uma seção de notícias */
+.news-section {
+    /* Margem superior grande para separar bem as editorias */
+    margin-top: var(--spacing-xl);
+}
+
+/* Título estilizado que encabeça as seções */
+.section-title {
+    /* Tamanho da fonte do título da seção */
+    font-size: 1.5rem;
+    /* Aplica a cor verde característica */
+    color: var(--verde-manaus);
+    /* Adiciona uma borda grossa laranja à esquerda (Identidade do portal) */
+    border-left: 5px solid var(--laranja-sunset);
+    /* Espaço entre a borda laranja e o texto do título */
+    padding-left: var(--spacing-sm);
+    /* Margem abaixo do título antes do grid de notícias */
+    margin-bottom: var(--spacing-lg);
+    /* Transforma em maiúsculas */
+    text-transform: uppercase;
+}
+
+/* Grade que organiza os cartões de notícias */
+.news-grid {
+    /* Define como um grid */
+    display: grid;
+    /* Cria 3 colunas de larguras iguais */
+    grid-template-columns: repeat(3, 1fr);
+    /* Espaço entre cada cartão de notícia */
+    gap: var(--spacing-md);
+}
+
+/* Estilização do cartão individual de notícia (Card) */
+.news-card {
+    /* Cor de fundo branca */
+    background-color: var(--white);
+    /* Borda fina cinza clara para definição do card */
+    border: 1px solid var(--gray-light);
+    /* Arredonda levemente os cantos */
+    border-radius: 4px;
+    /* Garante que imagens ou conteúdos não 'vazem' o arredondamento */
+    overflow: hidden;
+    /* Transição suave para o efeito de subida no hover */
+    transition: transform 0.2s;
+}
+
+/* Efeito de interatividade ao passar o mouse sobre o card */
+.news-card:hover {
+    /* Faz o card subir levemente (5px) */
+    transform: translateY(-5px);
+    /* Adiciona uma sombra para dar efeito de profundidade */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Área reservada para a imagem dentro do card */
+.card-img {
+    /* Define uma altura fixa para manter o padrão visual do grid */
+    height: 180px;
+    /* Cor de fundo cinza médio caso a imagem demore a carregar */
+    background-color: var(--gray-medium);
+    /* Esconde partes da imagem que ultrapassarem os limites */
+    overflow: hidden;
+}
+
+/* Estilo da tag img dentro do container card-img */
+.card-img img {
+    /* Faz a imagem ocupar toda a largura e altura disponível */
+    width: 100%;
+    height: 100%;
+    /* Corta a imagem para preencher o espaço sem distorcer as proporções */
+    object-fit: cover;
+    /* Transição suave para o efeito de zoom */
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de zoom suave na imagem ao interagir com o card pai */
+.news-card:hover .card-img img {
+    /* Aumenta a imagem em 5% */
+    transform: scale(1.05);
+}
+
+/* Área de texto logo abaixo da imagem no card */
+.card-content {
+    /* Adiciona preenchimento interno para o texto não encostar nas bordas */
+    padding: var(--spacing-sm);
+}
+
+/* Estilo da pequena categoria exibida dentro do card */
+.card-category {
+    /* Tamanho de fonte reduzido */
+    font-size: 0.7rem;
+    /* Texto em negrito e cor laranja */
+    font-weight: 700;
+    color: var(--laranja-sunset);
+    /* Transforma em maiúsculas */
+    text-transform: uppercase;
+}
+
+/* Título da notícia dentro do cartão */
+.card-content h3 {
+    /* Tamanho de fonte intermediário */
+    font-size: 1.1rem;
+    /* Pequena margem vertical */
+    margin: 5px 0;
+    /* Espaçamento entre linhas para títulos longos */
+    line-height: 1.3;
+}
+
+/* --- Seção de Newsletter 'Café com Tucumã' --- */
+
+/* Estilização da faixa de inscrição */
+.newsletter-banner {
+    /* Fundo com o laranja vibrante do portal */
+    background-color: var(--laranja-sunset);
+    /* Texto em branco para alto contraste */
+    color: var(--white);
+    /* Espaçamento externo superior para separar de outras seções */
+    margin-top: var(--spacing-xl);
+    /* Preenchimento interno generoso em todos os lados */
+    padding: var(--spacing-xl);
+    /* Arredonda os cantos da faixa */
+    border-radius: 8px;
+    /* Centraliza todo o texto interno */
+    text-align: center;
+}
+
+/* Alinhamento dos itens do formulário da newsletter */
+.newsletter-form {
+    /* Margem acima para afastar do título do banner */
+    margin-top: var(--spacing-md);
+    /* Usa flexbox para alinhar input e botão lado a lado */
+    display: flex;
+    /* Centraliza os elementos horizontalmente */
+    justify-content: center;
+    /* Espaço entre o campo de texto e o botão */
+    gap: 10px;
+}
+
+/* Estilo do campo de entrada de e-mail */
+.newsletter-form input {
+    /* Preenchimento interno para o texto não colar nas bordas */
+    padding: 0.75rem;
+    /* Arredonda os cantos */
+    border-radius: 4px;
+    /* Remove a borda padrão do sistema */
+    border: none;
+    /* Define uma largura fixa de 300px para o campo */
+    width: 300px;
+}
+
+/* --- Layout Split (Dividido) para Política e Guia Manaus --- */
+
+/* Container que divide a tela ao meio */
+.horizontal-split {
+    /* Define como grid */
+    display: grid;
+    /* Cria duas colunas de tamanhos exatamente iguais */
+    grid-template-columns: 1fr 1fr;
+    /* Espaço grande entre as duas colunas */
+    gap: var(--spacing-xl);
+    /* Margem superior para separação */
+    margin-top: var(--spacing-xl);
+}
+
+/* Lista de notícias em formato de linha fina (minimalista) */
+.list-news-minimal li {
+    /* Espaço abaixo de cada notícia da lista */
+    margin-bottom: var(--spacing-sm);
+    /* Adiciona uma linha divisória bem clara na base */
+    border-bottom: 1px solid var(--gray-light);
+    /* Espaçamento interno antes da linha */
+    padding-bottom: var(--spacing-xs);
+}
+
+/* Estilo do link nas notícias minimalistas */
+.list-news-minimal a {
+    /* Define peso de fonte seminegrito */
+    font-weight: 600;
+}
+
+/* --- Agenda Cultural Interativa --- */
+
+/* Alinhamento dos botões de filtro da agenda */
+.agenda-filters {
+    /* Exibe em linha */
+    display: flex;
+    /* Espaço de 10px entre botões */
+    gap: 10px;
+    /* Margem na base para separar dos cards */
+    margin-bottom: 20px;
+    /* Permite que os botões 'quebrem' para a linha de baixo em telas pequenas */
+    flex-wrap: wrap;
+}
+
+/* Estilo individual dos botões de filtro */
+.filter-btn {
+    /* Preenchimento interno do botão */
+    padding: 8px 16px;
+    /* Adiciona borda verde fina */
+    border: 1px solid var(--verde-manaus);
+    /* Fundo transparente por padrão */
+    background: transparent;
+    /* Texto na cor verde institucional */
+    color: var(--verde-manaus);
+    /* Formato arredondado (estilo pílula) */
+    border-radius: 20px;
+    /* Altera o cursor para mãozinha indicando clique */
+    cursor: pointer;
+    /* Peso de fonte seminegrito */
+    font-weight: 600;
+    /* Transição suave para todas as mudanças de cor */
+    transition: all 0.3s;
+}
+
+/* Estilo visual para o botão de filtro que está ativo ou ao passar o mouse */
+.filter-btn.active, .filter-btn:hover {
+    /* Preenche o fundo com verde */
+    background: var(--verde-manaus);
+    /* Muda a cor do texto para branco */
+    color: white;
+}
+
+/* Grade de exibição dos cartões de evento da agenda */
+.agenda-grid {
+    /* Define como grid */
+    display: grid;
+    /* Cria colunas dinâmicas de no mínimo 280px que se ajustam ao espaço disponível */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Espaço entre os cartões */
+    gap: 20px;
+}
+
+/* Estilização do cartão individual da agenda cultural */
+.agenda-card {
+    /* Alinha o bloco de data e o bloco de informação em linha horizontal */
+    display: flex;
+    /* Define a cor de fundo azulada bem clarinha */
+    background: #f8fafc;
+    /* Arredonda os cantos do cartão */
+    border-radius: 8px;
+    /* Esconde qualquer conteúdo que 'vaze' os limites arredondados */
+    overflow: hidden;
+    /* Adiciona uma borda fina cinza para definição visual */
+    border: 1px solid #e2e8f0;
+}
+
+/* Bloco que exibe a data (Dia/Mês) à esquerda do cartão */
+.agenda-date {
+    /* Fundo com a cor principal verde */
+    background: var(--verde-manaus);
+    /* Texto em branco */
+    color: white;
+    /* Preenchimento interno */
+    padding: 15px;
+    /* Organiza o dia e o mês um abaixo do outro */
+    display: flex;
+    flex-direction: column;
+    /* Centraliza o conteúdo horizontal e verticalmente */
+    align-items: center;
+    justify-content: center;
+    /* Define uma largura mínima de 70px para manter o padrão visual */
+    min-width: 70px;
+}
+
+/* Estilo do número do dia no bloco de data */
+.agenda-date .day {
+    /* Fonte grande e em negrito para impacto */
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Estilo do nome do mês no bloco de data */
+.agenda-date .month {
+    /* Fonte menor e em maiúsculas */
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Bloco de texto informativo sobre o evento */
+.agenda-info {
+    /* Adiciona preenchimento interno */
+    padding: 15px;
+}
+
+/* Título do evento dentro da agenda */
+.agenda-info h4 {
+    /* Pequeno espaço na base */
+    margin-bottom: 5px;
+    /* Tamanho de fonte equilibrado */
+    font-size: 1.1rem;
+}
+
+/* Parágrafo de descrição ou local do evento */
+.agenda-info p {
+    /* Tamanho de fonte reduzido */
+    font-size: 0.85rem;
+    /* Cor cinza escuro para melhor legibilidade */
+    color: var(--charcoal);
+    /* Margem na base para separar da etiqueta (badge) */
+    margin-bottom: 10px;
+}
+
+/* Etiquetas coloridas (Badges) para identificar o tipo de evento */
+.badge {
+    /* Fonte pequena */
+    font-size: 0.7rem;
+    /* Preenchimento interno para criar a caixa da etiqueta */
+    padding: 3px 8px;
+    /* Cantos arredondados */
+    border-radius: 4px;
+    /* Texto em branco */
+    color: white;
+    /* Transforma em maiúsculas e deixa em negrito */
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Cores específicas para as editorias da agenda cultural */
+.badge.teatro { background: #8b5cf6; }       /* Roxo para Teatro */
+.badge.shows { background: #ec4899; }        /* Rosa para Shows */
+.badge.gastronomia { background: #f59e0b; }   /* Âmbar para Gastronomia */
+
+/* --- Regras de Responsividade para Dispositivos Móveis --- */
+
+/* Quando a tela for menor que 768px (Celulares e Tablets pequenos) */
+@media (max-width: 768px) {
+    /* Transforma grids de múltiplas colunas em uma única coluna vertical */
+    .news-grid, .horizontal-split {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Organiza os campos da newsletter um abaixo do outro no celular */
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    /* Faz o campo de entrada de e-mail ocupar 100% da largura da tela */
+    .newsletter-form input {
+        width: 100%;
+    }
+}
+
+

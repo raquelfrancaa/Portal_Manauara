@@ -1,0 +1,272 @@
+/* Estilização do cabeçalho principal do portal */
+#main-header {
+    /* Faz o cabeçalho ocupar toda a largura da tela */
+    width: 100%;
+    /* Define a cor de fundo como branco */
+    background-color: var(--white);
+    /* Adiciona uma sombra leve na parte inferior para dar profundidade e destacar do conteúdo */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Barra superior preta que contém widgets (Clima/Rio Negro) */
+.top-bar {
+    /* Aplica a cor cinza escuro de fundo */
+    background-color: var(--charcoal);
+    /* Define a cor do texto como branco para contraste */
+    color: var(--white);
+    /* Pequeno preenchimento vertical para não encostar nas bordas */
+    padding: 5px 0;
+    /* Reduz o tamanho da fonte para informações secundárias */
+    font-size: 0.85rem;
+}
+
+/* Container para alinhar as informações de utilidade (clima/rio) */
+.utility-info {
+    /* Organiza os itens em linha */
+    display: flex;
+    /* Adiciona um espaço de 20px entre os widgets */
+    gap: 20px;
+}
+
+/* Container da barra de navegação logo abaixo da top-bar */
+.navbar {
+    /* Define o espaçamento vertical interno (topo e base) */
+    padding: 1rem 0;
+}
+
+/* Alinhamento dos itens internos da barra de navegação (Logo, Menu, Botões) */
+.nav-content {
+    /* Organiza em linha com distribuição de espaço máximo entre os grupos */
+    display: flex;
+    /* Coloca cada grupo (logo, menu, ações) nos cantos e centro */
+    justify-content: space-between;
+    /* Centraliza verticalmente os itens para ficarem alinhados na mesma altura */
+    align-items: center;
+}
+
+/* Estilização do Logotipo */
+.logo h1 {
+    /* Aplica a cor verde característica de Manaus */
+    color: var(--verde-manaus);
+    /* Define um tamanho de fonte equilibrado */
+    font-size: 1.5rem;
+    /* Deixa o texto todo em letras maiúsculas para maior peso visual */
+    text-transform: uppercase;
+}
+
+/* Destaque para a palavra 'Manauara' no logo */
+.logo span {
+    /* Aplica a cor laranja de contraste no final do nome */
+    color: var(--laranja-sunset);
+}
+
+/* Estilo da lista de links do menu de navegação */
+.nav-menu {
+    /* Organiza os itens do menu em linha horizontal */
+    display: flex;
+    /* Adiciona um espaço de 20px entre cada item do menu */
+    gap: 20px;
+}
+
+/* Estilo individual dos links do menu */
+.nav-menu a {
+    /* Define o peso da fonte como seminegrito */
+    font-weight: 600;
+    /* Usa a cor cinza escuro padrão do site */
+    color: var(--charcoal);
+    /* Adiciona uma transição suave na mudança de cor ao passar o mouse */
+    transition: color 0.3s;
+}
+
+/* Efeito ao passar o mouse (hover) nos links do menu */
+.nav-menu a:hover {
+    /* Muda a cor para o verde do portal ao interagir */
+    color: var(--verde-manaus);
+}
+
+/* Container das ações à direita (Busca e Botão de WhatsApp) */
+.nav-actions {
+    /* Organiza busca e botão em linha */
+    display: flex;
+    /* Centraliza os elementos verticalmente */
+    align-items: center;
+    /* Adiciona um espaço de 15px entre os elementos */
+    gap: 15px;
+}
+
+/* Estilização da caixa de busca no cabeçalho */
+.search-container {
+    /* Organiza o input e o ícone de lupa em linha */
+    display: flex;
+    /* Centraliza o ícone com o texto verticalmente */
+    align-items: center;
+    /* Define uma cor de fundo cinza bem clara */
+    background: #f1f5f9;
+    /* Cria bordas totalmente arredondadas (pílula) */
+    border-radius: 20px;
+    /* Espaçamento interno para os elementos não encostarem na borda */
+    padding: 5px 15px;
+    /* Adiciona uma borda fina cinza para definição */
+    border: 1px solid #e2e8f0;
+}
+
+/* Estilo do campo de texto de busca (Input) */
+.search-container input {
+    /* Remove o fundo padrão do input para usar o fundo do container pai */
+    background: transparent;
+    /* Remove as bordas padrão do input */
+    border: none;
+    /* Define a cor do texto digitado */
+    color: var(--charcoal);
+    /* Espaçamento interno */
+    padding: 5px;
+    /* Remove o contorno de foco padrão do navegador ao clicar */
+    outline: none;
+    /* Define uma largura fixa para o campo */
+    width: 120px;
+    /* Define o tamanho da fonte */
+    font-size: 0.9rem;
+}
+
+/* Estilo do texto de dica (placeholder) dentro do campo de busca */
+.search-container input::placeholder {
+    /* Deixa o texto de dica com uma cor mais suave */
+    color: var(--gray-medium);
+}
+
+/* Estilo do botão de busca (Lupa) */
+.search-container button {
+    /* Remove o fundo padrão do botão */
+    background: transparent;
+    /* Remove a borda padrão do botão */
+    border: none;
+    /* Muda o cursor para "mãozinha" ao passar por cima */
+    cursor: pointer;
+}
+
+/* Grupo de links de redes sociais (Geralmente no rodapé, mas definido aqui para ícones sociais) */
+.social-links {
+    /* Organiza os ícones em linha */
+    display: flex;
+    /* Espaço de 10px entre cada ícone */
+    gap: 10px;
+    /* Margem superior para separar de elementos acima */
+    margin-top: 10px;
+}
+
+/* Estilo individual de cada ícone circular de rede social */
+.social-icon {
+    /* Usa flexbox para centralizar o texto/ícone dentro do círculo */
+    display: flex;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    justify-content: center;
+    /* Define largura e altura iguais para criar um quadrado perfeito */
+    width: 32px;
+    height: 32px;
+    /* Aplica a cor verde de fundo */
+    background: var(--verde-manaus);
+    /* Define a cor do ícone/texto como branco forçado */
+    color: white !important;
+    /* Transforma o quadrado em um círculo perfeito */
+    border-radius: 50%;
+    /* Remove o sublinhado padrão de links */
+    text-decoration: none;
+    /* Define um tamanho de fonte pequeno para as siglas (IG, FB, TW) */
+    font-size: 0.7rem;
+    /* Deixa a sigla em negrito */
+    font-weight: bold;
+    /* Adiciona transições suaves para movimento e cor */
+    transition: transform 0.3s, background 0.3s;
+}
+
+/* Efeito ao passar o mouse nos ícones sociais */
+.social-icon:hover {
+    /* Muda a cor de fundo para laranja ao interagir */
+    background: var(--laranja-sunset);
+    /* Faz o ícone "subir" levemente (3px) para efeito de profundidade */
+    transform: translateY(-3px);
+}
+
+/* Regra de responsividade para telas menores que 992px (Tablets e Celulares) */
+@media (max-width: 992px) {
+    /* Esconde a barra de busca no topo para evitar que o menu fique muito apertado */
+    .search-container {
+        display: none;
+    }
+}
+
+/* Estilo do botão de "Hambúrguer" (Menu Mobile) */
+.mobile-toggle {
+    /* Escondido por padrão em telas grandes (Desktop) */
+    display: none;
+    /* Organiza as 3 barrinhas em coluna */
+    flex-direction: column;
+    /* Espaço de 5px entre cada barrinha */
+    gap: 5px;
+    /* Remove fundos e bordas do botão */
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilo individual das 3 barrinhas que formam o ícone de menu mobile */
+.mobile-toggle span {
+    /* Define a largura da barrinha */
+    width: 25px;
+    /* Define a espessura da barrinha */
+    height: 3px;
+    /* Aplica a cor verde principal */
+    background-color: var(--verde-manaus);
+    /* Arredonda levemente as pontas das barrinhas */
+    border-radius: 2px;
+}
+
+/* Regra de responsividade para telas de celulares (Abaixo de 768px) */
+@media (max-width: 768px) {
+    /* Reposiciona o menu para virar uma lista vertical sobreposta */
+    .nav-menu {
+        /* Esconde o menu inicialmente no celular */
+        display: none;
+        /* Remove o menu do fluxo normal e o fixa abaixo do cabeçalho */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        /* Faz o menu ocupar toda a largura da tela */
+        width: 100%;
+        /* Muda a cor de fundo do menu para verde no celular */
+        background-color: var(--verde-manaus);
+        /* Organiza os links um abaixo do outro */
+        flex-direction: column;
+        /* Adiciona preenchimento interno */
+        padding: 20px;
+        /* Centraliza o texto dos links */
+        text-align: center;
+        /* Garante que o menu fique acima de outros elementos da página */
+        z-index: 1000;
+    }
+
+    /* Classe aplicada via JavaScript ao clicar no botão mobile-toggle */
+    .nav-menu.active {
+        /* Torna o menu visível */
+        display: flex;
+    }
+
+    /* Ajuste de cor dos links do menu no celular */
+    .nav-menu a {
+        /* Muda o texto para branco já que o fundo virou verde */
+        color: var(--white);
+    }
+    
+    /* Ativa a exibição do botão de menu hambúrguer */
+    .mobile-toggle {
+        display: flex;
+    }
+
+    /* Centraliza as informações de clima/rio na barra superior em telas pequenas */
+    .utility-info {
+        justify-content: center;
+    }
+}
+

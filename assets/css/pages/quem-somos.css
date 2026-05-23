@@ -1,0 +1,104 @@
+/* pages/quem-somos.css - Estilos exclusivos para a página institucional de apresentação */
+
+/* Container que centraliza o conteúdo institucional */
+.about-container {
+    /* Limita a largura para garantir leitura confortável (ideal para textos longos) */
+    max-width: 800px;
+    /* Centraliza o container e adiciona margem vertical generosa */
+    margin: var(--spacing-xl) auto;
+    /* Altura da linha para melhor legibilidade */
+    line-height: 1.8;
+}
+
+/* Cabeçalho da página (Título e Slogan) */
+.about-header {
+    /* Centraliza o texto do cabeçalho */
+    text-align: center;
+    /* Margem abaixo para separar da imagem principal */
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Título 'Quem Somos' */
+.about-header h1 {
+    /* Fonte grande */
+    font-size: 2.5rem;
+    /* Cor verde institucional */
+    color: var(--verde-manaus);
+    /* Pequeno espaço abaixo do título */
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Subtítulos dentro do texto institucional */
+.about-content h2 {
+    /* Cor laranja para destaque e separação de tópicos */
+    color: var(--laranja-sunset);
+    /* Espaço acima para separar do parágrafo anterior */
+    margin-top: var(--spacing-lg);
+    /* Espaço abaixo para aproximar do texto seguinte */
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Parágrafos do texto institucional */
+.about-content p {
+    /* Margem na base de cada parágrafo */
+    margin-bottom: var(--spacing-md);
+    /* Fonte levemente maior para uma leitura pausada */
+    font-size: 1.1rem;
+}
+
+/* Seção de Missão, Visão e Valores usando Grid */
+.mission-vision-values {
+    /* Define o container como grid */
+    display: grid;
+    /* Cria colunas automáticas de no mínimo 250px que se ajustam à tela */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Espaço entre os cartões */
+    gap: var(--spacing-md);
+    /* Margem no topo para separar do texto histórico */
+    margin-top: var(--spacing-xl);
+}
+
+/* Cartão individual para Missão, Visão ou Valores */
+.mvh-card {
+    /* Fundo azulado muito claro */
+    background: #f8fafc;
+    /* Preenchimento interno */
+    padding: var(--spacing-md);
+    /* Arredonda os cantos */
+    border-radius: 8px;
+    /* Adiciona uma barra verde grossa no topo para identificação visual */
+    border-top: 4px solid var(--verde-manaus);
+}
+
+/* Título dentro do cartão (ex: 'Missão') */
+.mvh-card h3 {
+    /* Cor verde institucional */
+    color: var(--verde-manaus);
+    /* Margem abaixo do título */
+    margin-bottom: var(--spacing-xs);
+}
+
+/* Seção opcional para fotos da equipe */
+.team-section {
+    /* Margem no topo */
+    margin-top: var(--spacing-xl);
+    /* Centraliza o conteúdo (fotos/nomes) */
+    text-align: center;
+}
+
+/* Imagem de destaque institucional */
+.hero-about-img {
+    /* Ocupa 100% da largura do container (800px) */
+    width: 100%;
+    /* Altura fixa */
+    height: 300px;
+    /* Corta a imagem para preencher sem achatar */
+    object-fit: cover;
+    /* Arredonda as bordas para combinar com os cards */
+    border-radius: 12px;
+    /* Margem na base */
+    margin-bottom: var(--spacing-lg);
+    /* Cor de fundo caso a imagem demore a carregar */
+    background-color: var(--gray-light);
+}
+

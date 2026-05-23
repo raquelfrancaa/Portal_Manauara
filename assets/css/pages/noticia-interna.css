@@ -1,0 +1,149 @@
+/* pages/noticia-interna.css - Estilos exclusivos para a exibição de uma reportagem completa */
+
+/* Cabeçalho do artigo (Título e Metadados) */
+.article-header {
+    /* Margem no topo para separação do menu */
+    margin-top: var(--spacing-xl);
+    /* Limita a largura do texto para melhorar a leitura (Conforto visual) */
+    max-width: 800px;
+    /* Centraliza o bloco do título na tela */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Área de informações (Editoria e Data) acima do título */
+.article-meta {
+    /* Cor cinza médio para ser discreto */
+    color: var(--gray-medium);
+    /* Tamanho de fonte reduzido */
+    font-size: 0.9rem;
+    /* Margem abaixo dos metadados */
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Nome da categoria dentro do artigo */
+.article-category {
+    /* Cor laranja característica para destaque */
+    color: var(--laranja-sunset);
+    /* Texto em negrito */
+    font-weight: 700;
+    /* Transforma em maiúsculas */
+    text-transform: uppercase;
+    /* Espaço à direita para separar da data */
+    margin-right: 10px;
+}
+
+/* Título principal da reportagem (H1) */
+.article-title {
+    /* Fonte grande e imponente */
+    font-size: 2.5rem;
+    /* Altura da linha para títulos de múltiplas linhas */
+    line-height: 1.2;
+    /* Espaço abaixo do título */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Resumo/Linha fina da notícia */
+.article-excerpt {
+    /* Fonte maior que o corpo de texto para destaque */
+    font-size: 1.25rem;
+    /* Cor cinza escuro azulado */
+    color: var(--charcoal);
+    /* Leve transparência para suavizar */
+    opacity: 0.8;
+    /* Espaço grande abaixo do resumo */
+    margin-bottom: var(--spacing-lg);
+    /* Estilo itálico para diferenciar do corpo */
+    font-style: italic;
+}
+
+/* Imagem principal da notícia (Hero Image) */
+.article-hero-img {
+    /* Ocupa 100% da largura do container */
+    width: 100%;
+    /* Altura fixa para impacto visual */
+    height: 450px;
+    /* Cor de fundo caso a imagem falhe */
+    background-color: var(--gray-light);
+    /* Arredonda os cantos da imagem */
+    border-radius: 8px;
+    /* Margem abaixo da imagem */
+    margin-bottom: var(--spacing-lg);
+    /* Corta a imagem para preencher sem distorção */
+    object-fit: cover;
+}
+
+/* Container responsivo para vídeos incorporados (YouTube) */
+.video-container {
+    /* Necessário para posicionamento absoluto do iframe interno */
+    position: relative;
+    /* Técnica de padding para manter proporção 16:9 (9 dividido por 16 = 56.25%) */
+    padding-bottom: 56.25%;
+    /* Altura inicial zerada pois o padding criará a altura */
+    height: 0;
+    /* Esconde o que sair das bordas */
+    overflow: hidden;
+    /* Largura total */
+    max-width: 100%;
+    /* Fundo preto para o player */
+    background: #000;
+    /* Arredonda os cantos */
+    border-radius: 8px;
+    /* Margem abaixo do vídeo */
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Estilo do iframe do vídeo dentro do container responsivo */
+.video-container iframe {
+    /* Fixa o vídeo nos cantos do container pai */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* Faz o vídeo preencher todo o espaço do container responsivo */
+    width: 100%;
+    height: 100%;
+    /* Remove bordas padrão */
+    border: 0;
+}
+
+/* Área do conteúdo textual da notícia */
+.article-body {
+    /* Limita a largura para garantir uma leitura confortável (ideal entre 60-80 caracteres por linha) */
+    max-width: 800px;
+    /* Centraliza o texto na tela */
+    margin: 0 auto;
+    /* Tamanho de fonte padrão para leitura longa */
+    font-size: 1.1rem;
+    /* Altura da linha generosa (1.8) para evitar fadiga visual */
+    line-height: 1.8;
+}
+
+/* Estilo dos parágrafos do texto da notícia */
+.article-body p {
+    /* Margem entre um parágrafo e outro */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Estilo dos subtítulos dentro do corpo da notícia (H2) */
+.article-body h2 {
+    /* Margem maior acima do subtítulo para separar seções */
+    margin-top: var(--spacing-lg);
+    /* Pequena margem abaixo para aproximar do texto seguinte */
+    margin-bottom: var(--spacing-sm);
+    /* Cor verde institucional */
+    color: var(--verde-manaus);
+}
+
+/* Responsividade para telas menores (Celulares) */
+@media (max-width: 768px) {
+    /* Reduz o tamanho do título para caber em telas pequenas */
+    .article-title {
+        font-size: 1.8rem;
+    }
+    
+    /* Reduz a altura da imagem para não ocupar a tela toda verticalmente */
+    .article-hero-img {
+        height: 250px;
+    }
+}
+

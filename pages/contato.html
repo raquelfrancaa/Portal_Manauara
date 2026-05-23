@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- Página de Contato e Interação com o Leitor -->
+<html lang="pt-br">
+<head>
+    <!-- Configuração de codificação para caracteres especiais -->
+    <meta charset="UTF-8">
+    <!-- Garantia de responsividade para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da aba do navegador -->
+    <title>Contato - Portal Manauara</title>
+    
+    <!-- Importação de fontes Google Fonts (Montserrat e Open Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Importação de Estilos CSS (Caminhos relativos à pasta /pages) -->
+    <link rel="stylesheet" href="../assets/css/variables.css">      <!-- Variáveis de design -->
+    <link rel="stylesheet" href="../assets/css/reset.css">          <!-- Limpeza de estilos padrão -->
+    <link rel="stylesheet" href="../assets/css/global.css">         <!-- Estilos básicos compartilhados -->
+    <link rel="stylesheet" href="../assets/css/header.css">         <!-- Estilos do topo -->
+    <link rel="stylesheet" href="../assets/css/footer.css">         <!-- Estilos da base -->
+    <link rel="stylesheet" href="../assets/css/pages/contato.css">   <!-- Estilos específicos desta página -->
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header id="main-header">
+        <!-- Barra superior com informações dinâmicas -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="utility-info">
+                    <!-- IDs para preenchimento dinâmico via api.js -->
+                    <span id="weather-widget">Carregando clima...</span>
+                    <span id="river-level-widget">Rio Negro: Carregando...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegação -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Logo com retorno para a Home -->
+                    <a href="../index.html" class="logo">
+                        <h1>Portal <span>Manauara</span></h1>
+                    </a>
+                    
+                    <!-- Menu Principal -->
+                    <ul class="nav-menu">
+                        <li><a href="categoria.html">Cotidiano</a></li>
+                        <li><a href="#">Política</a></li>
+                        <li><a href="#">Guia Manaus</a></li>
+                        <li><a href="#">Cultura</a></li>
+                        <li><a href="#">Turismo</a></li>
+                    </ul>
+
+                    <!-- Ação de destaque -->
+                    <div class="nav-actions">
+                        <a href="https://wa.me/5592999999999" target="_blank" class="btn btn-accent btn-sm">Repórter Manauara</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Área de Conteúdo de Contato -->
+    <main class="container">
+        <!-- Layout dividido entre informações (esquerda) e formulário (direita) -->
+        <section class="contact-container">
+            
+            <!-- Coluna de Informações Institucionais de Contato -->
+            <div class="contact-info">
+                <h1>Fale Conosco</h1>
+                <p>Tem uma sugestão de pauta, crítica ou quer anunciar no Portal Manauara? Entre em contato conosco pelos nossos canais oficiais.</p>
+                
+                <!-- Blocos individuais de informação -->
+                <div class="info-item">
+                    <h3>Redação</h3>
+                    <p>redacao@portalmanauara.com.br</p>
+                </div>
+                <div class="info-item">
+                    <h3>Comercial</h3>
+                    <p>comercial@portalmanauara.com.br</p>
+                </div>
+                <div class="info-item">
+                    <h3>WhatsApp</h3>
+                    <p>(92) 99999-9999</p>
+                </div>
+                <div class="info-item">
+                    <h3>Endereço</h3>
+                    <p>Av. Djalma Batista, Manaus - AM</p>
+                </div>
+            </div>
+
+            <!-- Coluna do Formulário de Envio -->
+            <div class="contact-form">
+                <!-- ID configurado para manipulação via contato.js -->
+                <form id="form-contato">
+                    <!-- Campo de Nome -->
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+                    </div>
+                    <!-- Campo de E-mail com validação automática -->
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    </div>
+                    <!-- Campo de Assunto -->
+                    <div class="form-group">
+                        <label for="assunto">Assunto</label>
+                        <input type="text" id="assunto" name="assunto" required placeholder="Ex: Sugestão de Pauta">
+                    </div>
+                    <!-- Área de texto para a mensagem detalhada -->
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" required placeholder="Como podemos ajudar?"></textarea>
+                    </div>
+                    <!-- Botão de submissão do formulário -->
+                    <button type="submit" class="btn-submit">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé Padrão do Portal -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portal Manauara. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carregamento de Scripts JavaScript -->
+    <script src="../assets/js/api.js"></script>     <!-- Comunicação com APIs -->
+    <script src="../assets/js/main.js"></script>    <!-- Widgets do topo -->
+    <script src="../assets/js/menu.js"></script>    <!-- Menu mobile -->
+    <script src="../assets/js/contato.js"></script> <!-- Lógica do formulário de contato -->
+</body>
+</html>
+

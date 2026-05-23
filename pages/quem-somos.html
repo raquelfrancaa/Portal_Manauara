@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- Página Institucional "Quem Somos" -->
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página exibido no navegador -->
+    <title>Quem Somos - Portal Manauara</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS (Caminhos relativos saindo da pasta /pages) -->
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
+    <link rel="stylesheet" href="../assets/css/pages/quem-somos.css"> <!-- Estilo exclusivo da página "Sobre" -->
+</head>
+<body>
+
+    <!-- Cabeçalho Principal (Consistência visual em todo o site) -->
+    <header id="main-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="utility-info">
+                    <!-- Widgets dinâmicos (alimentados por api.js) -->
+                    <span id="weather-widget">Carregando clima...</span>
+                    <span id="river-level-widget">Rio Negro: Carregando...</span>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Link para retornar à Home -->
+                    <a href="../index.html" class="logo">
+                        <h1>Portal <span>Manauara</span></h1>
+                    </a>
+                    
+                    <ul class="nav-menu">
+                        <li><a href="categoria.html">Cotidiano</a></li>
+                        <li><a href="#">Política</a></li>
+                        <li><a href="#">Guia Manaus</a></li>
+                        <li><a href="#">Cultura</a></li>
+                        <li><a href="#">Turismo</a></li>
+                    </ul>
+
+                    <div class="nav-actions">
+                        <!-- Botão com link real para WhatsApp -->
+                        <a href="https://wa.me/5592999999999" target="_blank" class="btn btn-accent btn-sm">Repórter Manauara</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo da Página Quem Somos -->
+    <main class="container">
+        <section class="about-container">
+            <!-- Título e Subtítulo da página -->
+            <div class="about-header">
+                <h1>Quem Somos</h1>
+                <p>Informação com a alma e a força da nossa terra.</p>
+            </div>
+
+            <!-- Imagem de destaque institucional (Usando placeholder por enquanto) -->
+            <img src="https://via.placeholder.com/1000x400" alt="Vista de Manaus" class="hero-about-img">
+
+            <div class="about-content">
+                <!-- Parágrafos que descrevem o propósito e a visão do portal -->
+                <p>O <strong>Portal Manauara</strong> nasceu do desejo de conectar os moradores de Manaus e de todo o Amazonas com o que há de mais relevante em nossa região. Somos mais do que um site de notícias; somos um guia para quem vive, trabalha e se encanta com a capital da Amazônia.</p>
+                
+                <p>Nossa equipe é formada por profissionais apaixonados pela região, comprometidos com a ética jornalística e com a agilidade que os tempos modernos exigem. Do "hard news" policial e político à leveza das dicas de flutuantes e gastronomia local, nosso compromisso é com a verdade e com o povo manauara.</p>
+
+                <!-- História do Portal -->
+                <h2>Nossa História</h2>
+                <p>Fundado em 2024, o portal surgiu para preencher uma lacuna de informação local que une a utilidade pública (como o nível do Rio Negro e trânsito) com a cobertura cultural vibrante do nosso estado.</p>
+
+                <!-- Bloco de Missão, Visão e Valores (Grid definido no CSS) -->
+                <div class="mission-vision-values">
+                    <!-- Card de Missão -->
+                    <div class="mvh-card">
+                        <h3>Missão</h3>
+                        <p>Informar com precisão, valorizando a identidade cultural de Manaus e promovendo a cidadania.</p>
+                    </div>
+                    <!-- Card de Visão -->
+                    <div class="mvh-card">
+                        <h3>Visão</h3>
+                        <p>Ser a maior referência de conteúdo digital em Manaus, reconhecido pela inovação e proximidade com o leitor.</p>
+                    </div>
+                    <!-- Card de Valores -->
+                    <div class="mvh-card">
+                        <h3>Valores</h3>
+                        <p>Transparência, regionalismo, inovação tecnológica e responsabilidade social.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé Institucional -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portal Manauara. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interatividade e APIs -->
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/menu.js"></script>
+</body>
+</html>
+

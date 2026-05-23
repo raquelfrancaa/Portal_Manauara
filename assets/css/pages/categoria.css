@@ -1,0 +1,126 @@
+/* pages/categoria.css - Estilos exclusivos para a listagem de notícias por editoria */
+
+/* Cabeçalho da página de categoria */
+.category-header {
+    /* Espaço grande no topo para não colar no header fixo */
+    margin-top: var(--spacing-xl);
+    /* Espaço abaixo para separar do conteúdo */
+    margin-bottom: var(--spacing-lg);
+    /* Linha grossa verde na base do título para destaque visual */
+    border-bottom: 3px solid var(--verde-manaus);
+    /* Espaço interno na base antes da linha */
+    padding-bottom: var(--spacing-sm);
+}
+
+/* Título principal (H1) da categoria */
+.category-header h1 {
+    /* Fonte grande e impactante */
+    font-size: 2.5rem;
+    /* Cor verde institucional */
+    color: var(--verde-manaus);
+    /* Letras maiúsculas para manter o padrão do portal */
+    text-transform: uppercase;
+}
+
+/* Estrutura principal da página usando Grid */
+.category-grid {
+    /* Define o container como grid */
+    display: grid;
+    /* Divide em duas colunas: conteúdo (3 partes) e sidebar (1 parte) */
+    grid-template-columns: 3fr 1fr;
+    /* Espaço grande entre o conteúdo e a barra lateral */
+    gap: var(--spacing-xl);
+}
+
+/* Artigo de maior destaque dentro da página de categoria */
+.featured-article-cat {
+    /* Margem grande na base para separar da lista de notícias menores */
+    margin-bottom: var(--spacing-xl);
+    /* Organiza em grid de duas colunas (Imagem e Texto) */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Espaço médio entre imagem e informações */
+    gap: var(--spacing-md);
+    /* Fundo cinza claro para destacar o card */
+    background: var(--gray-light);
+    /* Preenchimento interno */
+    padding: var(--spacing-md);
+    /* Arredonda os cantos */
+    border-radius: 8px;
+}
+
+/* Imagem do artigo de destaque */
+.featured-article-cat img {
+    /* Ocupa toda a largura da sua coluna */
+    width: 100%;
+    /* Altura fixa para manter o padrão visual */
+    height: 300px;
+    /* Corta a imagem para preencher o espaço sem achatar */
+    object-fit: cover;
+    /* Arredonda levemente os cantos da imagem */
+    border-radius: 4px;
+}
+
+/* Lista vertical de notícias da categoria */
+.article-list-cat {
+    /* Organiza os itens um abaixo do outro */
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Espaço grande entre cada notícia da lista */
+    gap: var(--spacing-lg);
+}
+
+/* Item individual da lista de notícias (Notícia menor) */
+.article-item-cat {
+    /* Organiza em grid: Imagem pequena (200px) e Texto (Restante) */
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    /* Espaço entre imagem e texto */
+    gap: var(--spacing-md);
+    /* Espaço interno na base */
+    padding-bottom: var(--spacing-md);
+    /* Linha divisória fina entre as notícias */
+    border-bottom: 1px solid var(--gray-light);
+}
+
+/* Imagem pequena das notícias da lista */
+.article-item-cat img {
+    /* Ocupa toda a largura da sua coluna (200px) */
+    width: 100%;
+    /* Altura proporcional menor */
+    height: 140px;
+    /* Garante o preenchimento correto sem distorção */
+    object-fit: cover;
+    /* Arredonda os cantos */
+    border-radius: 4px;
+}
+
+/* Título das seções da barra lateral (Sidebar) */
+.sidebar-title {
+    /* Tamanho de fonte intermediário */
+    font-size: 1.2rem;
+    /* Cor laranja para contraste na lateral */
+    color: var(--laranja-sunset);
+    /* Margem abaixo do título */
+    margin-bottom: var(--spacing-md);
+    /* Transforma em maiúsculas */
+    text-transform: uppercase;
+    /* Linha laranja fina na base */
+    border-bottom: 2px solid var(--laranja-sunset);
+    /* Espaço antes da linha */
+    padding-bottom: 5px;
+}
+
+/* Responsividade para telas menores (Tablets e Celulares) */
+@media (max-width: 768px) {
+    /* Transforma todos os grids de colunas em uma única coluna vertical */
+    .category-grid, .featured-article-cat, .article-item-cat {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Reduz a altura das imagens em telas pequenas para economizar espaço */
+    .featured-article-cat img, .article-item-cat img {
+        height: 200px;
+    }
+}
+
