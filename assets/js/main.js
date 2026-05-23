@@ -11,7 +11,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* Chama a função que gerencia os filtros da seção de Agenda Cultural */
     initAgenda();
+
+    /* Inicializa a funcionalidade de busca real no front-end */
+    initSearch();
 });
+
+/* Implementa a lógica de busca funcional (filtro de cards) */
+function initSearch() {
+    /* Seleciona o campo de entrada de texto e o botão de busca */
+    const searchInput = document.getElementById('search-input');
+    const searchBtn = document.getElementById('search-btn');
+
+    /* Se o campo de busca não existir na página atual, interrompe a execução */
+    if (!searchInput) return;
+
+    /* Função interna que executa a filtragem dos elementos */
+    const performSearch = () => {
+        /* Normaliza o termo de busca: minúsculas e sem espaços extras */
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        /* Seleciona todos os tipos de cards que podem ser filtrados no portal */
+        const cards = document.querySelectorAll('.news-card, .agenda-card, .article-item-cat, .featured-article-cat');
+
+        cards.forEach(card => {
+            /* Captura todo o texto contido no card para comparação */
+            const cardText = card.textContent.toLowerCase();
+            
+            /* Se o termo de busca estiver presente no texto do card (ou se a busca estiver vazia) */
+            if (cardText.includes(searchTerm)) {
+                /* Exibe o card. Se for da agenda, usa flex para manter o layout */
+                card.style.display = card.classList.contains('agenda-card') ? 'flex' : 'block';
+            } else {
+                /* Esconde o card que não corresponde à busca */
+                card.style.display = 'none';
+            }
+        });
+    };
+
+    /* Adiciona o evento de 'input' para busca em tempo real conforme o usuário digita */
+    searchInput.addEventListener('input', performSearch);
+
+    /* Adiciona o evento de clique no botão de lupa, caso ele exista */
+    if (searchBtn) {
+        searchBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita comportamentos padrão de botões em forms
+            performSearch();
+        });
+    }
+}
 
 /* Função assíncrona para inicializar e exibir dados externos nos widgets do topo */
 async function initWidgets() {
