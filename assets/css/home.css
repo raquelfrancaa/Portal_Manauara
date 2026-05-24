@@ -17,7 +17,7 @@
     /* Define uma altura fixa para o destaque principal */
     height: 450px;
     /* Aplica um degradê escuro sobre a imagem para garantir a legibilidade do texto branco */
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('../img/hero-placeholder.webp');
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('../img/Eleicoes_2026.png');
     /* Faz a imagem de fundo cobrir todo o container sem distorcer */
     background-size: cover;
     /* Centraliza a imagem de fundo */
