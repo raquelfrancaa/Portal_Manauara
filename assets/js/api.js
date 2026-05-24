@@ -100,4 +100,28 @@ async function fetchRiverLevel() {
     }
 }
 
+/**
+ * Simula a busca de status do trânsito nas principais vias de Manaus.
+ * @returns {Promise} Objeto contendo o status geral e um ícone.
+ */
+async function fetchTrafficStatus() {
+    /* Simula um pequeno atraso de rede */
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    /* Retorna dados simulados baseados em horários comerciais típicos */
+    const hour = new Date().getHours();
+    let status = 'Normal';
+    let icon = '🚗';
+
+    if ((hour >= 7 && hour <= 9) || (hour >= 17 && hour <= 19)) {
+        status = 'Intenso';
+        icon = '🛑';
+    }
+
+    return {
+        status: status,
+        icon: icon
+    };
+}
+
 

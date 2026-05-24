@@ -42,6 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
             /* Se o título existir, atualiza a tag <title> do navegador para refletir o nome da notícia */
             if (titleElement) {
                 document.title = `${titleElement.innerText} - Portal Manauara`;
+                
+                /* Gera dinamicamente os dados estruturados (Schema.org) para SEO */
+                updateNewsSchema(container, noticiaId);
             }
         })
         .catch(error => {
@@ -51,4 +54,53 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = '<h2>Erro ao carregar a notícia.</h2><p>O conteúdo pode ter sido removido ou o link está incorreto.</p>';
         });
 });
+
+/**
+ * Cria e insere um bloco de script JSON-LD com o Schema NewsArticle
+ * para melhorar o SEO das notícias carregadas dinamicamente.
+ */
+function updateNewsSchema(container, id) {
+    const title = container.querySelector('.article-title')?.innerText;
+    const excerpt = container.querySelector('.article-excerpt')?.innerText;
+    const category = container.querySelector('.article-category')?.innerText;
+    const date = container.querySelector('time')?.getAttribute('datetime');
+    const image = container.querySelector('.article-hero-img')?.src;
+
+    const schemaData = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": title,
+        "description": excerpt,
+        "articleSection": category,
+        "datePublished": date,
+        "author": {
+            "@type": "Organization",
+            "name": "Portal Manauara"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Portal Manauara",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://portalmanauara.com.br/assets/img/logo.png"
+            }
+        },
+        "image": image,
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": window.location.href
+        }
+    };
+
+    /* Remove schema anterior se existir para evitar duplicidade */
+    const oldSchema = document.getElementById('dynamic-news-schema');
+    if (oldSchema) oldSchema.remove();
+
+    /* Cria o novo elemento de script */
+    const script = document.createElement('script');
+    script.id = 'dynamic-news-schema';
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schemaData);
+    document.head.appendChild(script);
+}
 

@@ -20,8 +20,9 @@
     <link rel="stylesheet" href="../assets/css/global.css">         <!-- Estilos básicos compartilhados -->
     <link rel="stylesheet" href="../assets/css/header.css">         <!-- Estilos do topo -->
     <link rel="stylesheet" href="../assets/css/footer.css">         <!-- Estilos da base -->
-    <link rel="stylesheet" href="../assets/css/pages/contato.css">   <!-- Estilos específicos desta página -->
-</head>
+    <link rel="stylesheet" href="../assets/css/pages/contato.css"> <!-- Estilos exclusivos desta página -->
+    <link rel="stylesheet" href="../assets/css/social-share.css"> <!-- Estilos dos botões de compartilhamento -->
+    </head>
 <body>
 
     <!-- Cabeçalho Principal -->
@@ -30,9 +31,10 @@
         <div class="top-bar">
             <div class="container">
                 <div class="utility-info">
-                    <!-- IDs para preenchimento dinâmico via api.js -->
+                    <!-- Widgets alimentados dinamicamente via JS -->
                     <span id="weather-widget">Carregando clima...</span>
                     <span id="river-level-widget">Rio Negro: Carregando...</span>
+                    <span id="traffic-widget">Trânsito: Carregando...</span>
                 </div>
             </div>
         </div>
@@ -150,6 +152,7 @@
     <script src="../assets/js/main.js"></script>    <!-- Widgets do topo -->
     <script src="../assets/js/menu.js"></script>    <!-- Menu mobile -->
     <script src="../assets/js/contato.js"></script> <!-- Lógica do formulário de contato -->
+    <script src="../assets/js/social-share.js"></script> <!-- Sistema de compartilhamento social -->
 </body>
 </html>
 

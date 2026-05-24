@@ -22,8 +22,9 @@
     <link rel="stylesheet" href="../assets/css/header.css">         <!-- Estilos específicos do cabeçalho -->
     <link rel="stylesheet" href="../assets/css/home.css">           <!-- Reutiliza grid de notícias da home se necessário -->
     <link rel="stylesheet" href="../assets/css/footer.css">         <!-- Estilos específicos do rodapé -->
-    <link rel="stylesheet" href="../assets/css/pages/categoria.css"> <!-- Estilos exclusivos desta página de categoria -->
-</head>
+    <link rel="stylesheet" href="../assets/css/pages/categoria.css"> <!-- Estilos exclusivos desta página -->
+    <link rel="stylesheet" href="../assets/css/social-share.css"> <!-- Estilos dos botões de compartilhamento -->
+    </head>
 <body>
 
     <!-- Início do Cabeçalho Principal -->
@@ -35,6 +36,7 @@
                     <!-- IDs configurados para serem preenchidos pelo api.js/main.js -->
                     <span id="weather-widget">Carregando clima...</span>
                     <span id="river-level-widget">Rio Negro: Carregando...</span>
+                    <span id="traffic-widget">Trânsito: Carregando...</span>
                 </div>
             </div>
         </div>
@@ -90,7 +92,7 @@
             <section class="main-content-cat">
                 <!-- Artigo de Destaque da Categoria -->
                 <article class="featured-article-cat">
-                    <img src="https://via.placeholder.com/600x400" alt="Destaque Cotidiano">
+                    <img src="https://via.placeholder.com/600x400" alt="Destaque Cotidiano" loading="lazy">
                     <div class="featured-info">
                         <span class="card-category">Destaque</span>
                         <h2>Novas linhas de ônibus começam a operar na Zona Norte de Manaus</h2>
@@ -167,6 +169,7 @@
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/menu.js"></script>
+    <script src="../assets/js/social-share.js"></script> <!-- Sistema de compartilhamento social -->
 </body>
 </html>
 

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/footer.css">
     <link rel="stylesheet" href="../assets/css/pages/quem-somos.css"> <!-- Estilo exclusivo da página "Sobre" -->
+    <link rel="stylesheet" href="../assets/css/social-share.css"> <!-- Estilos dos botões de compartilhamento -->
 </head>
 <body>
 
@@ -30,6 +31,7 @@
                     <!-- Widgets dinâmicos (alimentados por api.js) -->
                     <span id="weather-widget">Carregando clima...</span>
                     <span id="river-level-widget">Rio Negro: Carregando...</span>
+                    <span id="traffic-widget">Trânsito: Carregando...</span>
                 </div>
             </div>
         </div>
@@ -81,7 +83,7 @@
             </div>
 
             <!-- Imagem de destaque institucional (Usando placeholder por enquanto) -->
-            <img src="https://via.placeholder.com/1000x400" alt="Vista de Manaus" class="hero-about-img">
+            <img src="https://via.placeholder.com/1000x400" alt="Vista de Manaus" class="hero-about-img" loading="lazy">
 
             <div class="about-content">
                 <!-- Parágrafos que descrevem o propósito e a visão do portal -->
@@ -128,6 +130,7 @@
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/menu.js"></script>
+    <script src="../assets/js/social-share.js"></script> <!-- Sistema de compartilhamento social -->
 </body>
 </html>
 

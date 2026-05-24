@@ -66,6 +66,8 @@ async function initWidgets() {
     const weatherEl = document.getElementById('weather-widget');
     /* Seleciona o elemento HTML onde o nível do Rio Negro será exibido */
     const riverEl = document.getElementById('river-level-widget');
+    /* Seleciona o elemento HTML onde o status do trânsito será exibido */
+    const trafficEl = document.getElementById('traffic-widget');
 
     /* Verifica se o elemento do clima existe e se a função de busca (definida em api.js) está disponível */
     if (weatherEl && typeof fetchManausWeather === 'function') {
@@ -84,6 +86,16 @@ async function initWidgets() {
         /* Se houver dados, insere a informação formatada com o nível e o status (subindo/descendo) */
         if (riverData) {
             riverEl.innerHTML = `💧 Rio Negro: ${riverData.level}m (${riverData.status})`;
+        }
+    }
+
+    /* Verifica se o elemento do trânsito existe e se a função de busca está disponível */
+    if (trafficEl && typeof fetchTrafficStatus === 'function') {
+        /* Aguarda o retorno dos dados simulados do trânsito */
+        const trafficData = await fetchTrafficStatus();
+        /* Se houver dados, insere a informação formatada */
+        if (trafficData) {
+            trafficEl.innerHTML = `${trafficData.icon} Trânsito: ${trafficData.status}`;
         }
     }
 }
