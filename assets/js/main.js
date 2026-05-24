@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSearch();
 });
 
-/* Implementa a lógica de busca funcional com layout dinâmico */
+/* Implementa a lógica de busca funcional com layout dinâmico e agrupamento por seções */
 function initSearch() {
     /* Seleciona o campo de entrada de texto e o botão de busca */
     const searchInput = document.getElementById('search-input');
@@ -36,8 +36,7 @@ function initSearch() {
     
     searchResultsContainer.innerHTML = `
         <h2 class="section-title" id="search-title" style="margin-top: 20px;">Resultados da Busca</h2>
-        <div class="search-news-list" style="display: flex; flex-direction: column; gap: 20px;"></div>
-        <div class="search-agenda-list agenda-grid" style="margin-top: 30px; display: none;"></div>
+        <div id="search-groups-container"></div>
         <div id="no-results-msg" style="display: none; text-align: center; padding: 60px 20px; color: var(--charcoal);">
             <p style="font-size: 1.5rem; margin-bottom: 10px;">🔍</p>
             <p style="font-size: 1.2rem;">Nenhum resultado encontrado para "<strong><span id="search-term-display"></span></strong>".</p>
@@ -49,12 +48,10 @@ function initSearch() {
     /* Função para capturar o conteúdo original da página que deve ser ocultado durante a busca */
     const getOriginalContent = () => Array.from(mainContainer.children).filter(child => child !== searchResultsContainer);
 
-    /* Função interna que executa a filtragem e renderização dos resultados */
+    /* Função interna que executa a filtragem, agrupamento e renderização dos resultados */
     const performSearch = () => {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        
-        const newsList = searchResultsContainer.querySelector('.search-news-list');
-        const agendaList = searchResultsContainer.querySelector('.search-agenda-list');
+        const groupsContainer = document.getElementById('search-groups-container');
         const noResultsMsg = document.getElementById('no-results-msg');
         const termDisplay = document.getElementById('search-term-display');
         const searchTitle = document.getElementById('search-title');
@@ -69,84 +66,140 @@ function initSearch() {
         /* Oculta o conteúdo original e exibe o container de busca */
         getOriginalContent().forEach(el => el.style.display = 'none');
         searchResultsContainer.style.display = 'block';
-
-        /* Limpa resultados anteriores */
-        newsList.innerHTML = '';
-        agendaList.innerHTML = '';
-        agendaList.style.display = 'none';
         
+        /* Limpa resultados anteriores */
+        groupsContainer.innerHTML = '';
+        
+        /* Seleciona todos os elementos que podem conter informações pesquisáveis */
+        const cards = document.querySelectorAll('.news-card, .agenda-card, .article-item-cat, .featured-article-cat, .main-feature, .list-news-minimal li, .news-list li');
+        
+        const resultsBySection = {};
         let hasResults = false;
-        let hasAgenda = false;
-
-        /* Seleciona todos os cards fontes de informação */
-        const cards = document.querySelectorAll('.news-card, .agenda-card, .article-item-cat, .featured-article-cat, .main-feature');
 
         cards.forEach(card => {
-            const cardText = card.textContent.toLowerCase();
+            const text = card.textContent.toLowerCase();
             
-            /* Se o termo de busca estiver presente no texto do card */
-            if (cardText.includes(searchTerm)) {
+            /* Se o termo de busca estiver presente no texto do elemento */
+            if (text.includes(searchTerm)) {
                 hasResults = true;
                 
-                /* Tratamento especial para Agenda (mantém o estilo original) */
-                if (card.classList.contains('agenda-card')) {
-                    hasAgenda = true;
-                    const clone = card.cloneNode(true);
-                    clone.style.display = 'flex'; // Garante que o clone seja visível
-                    agendaList.appendChild(clone);
-                } else {
-                    /* Extração de dados para notícias (converte para lista horizontal) */
-                    const title = card.querySelector('h2, h3')?.textContent || '';
-                    const excerpt = card.querySelector('p:not(.agenda-info p)')?.textContent || '';
-                    const category = card.querySelector('.category, .card-category')?.textContent || '';
-                    const link = card.querySelector('a')?.getAttribute('href') || '#';
-                    
-                    let imgSrc = '';
-                    const imgEl = card.querySelector('img');
-                    if (imgEl) {
-                        imgSrc = imgEl.src;
+                /* Determina a qual seção este resultado pertence para agrupamento */
+                let sectionName = 'Geral';
+                const sectionParent = card.closest('section, aside, .main-content-cat, #hero');
+                
+                if (sectionParent) {
+                    if (sectionParent.id === 'agenda') {
+                        sectionName = 'Agenda Cultural';
+                    } else if (sectionParent.id === 'hero') {
+                        sectionName = 'Destaques';
                     } else {
-                        /* Tenta extrair imagem de fundo (caso do main-feature) */
-                        const style = window.getComputedStyle(card);
-                        const bg = style.backgroundImage;
-                        if (bg && bg !== 'none') {
-                            const match = bg.match(/url\(['"]?(.*?)['"]?\)/);
-                            if (match) imgSrc = match[1];
-                        }
+                        /* Tenta pegar o título da seção de forma dinâmica */
+                        const titleEl = sectionParent.querySelector('.section-title, .sidebar-title, h1, h2, h3');
+                        if (titleEl) sectionName = titleEl.textContent.trim();
                     }
-                    
-                    /* Cria o elemento de resultado no formato de lista horizontal */
-                    const resultItem = document.createElement('article');
-                    resultItem.innerHTML = `
-                        <a href="${link}" class="search-result-item">
-                            <div class="result-img">
-                                ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : '<div style="width: 100%; height: 100%; background: var(--gray-light);"></div>'}
-                            </div>
-                            <div class="result-content">
-                                ${category ? `<span class="card-category" style="display: block; margin-bottom: 5px;">${category}</span>` : ''}
-                                <h3 style="margin: 0 0 8px 0; color: var(--charcoal);">${title}</h3>
-                                <p style="font-size: 0.95rem; color: #555; margin: 0;">${excerpt}</p>
-                            </div>
-                        </a>
-                    `;
-                    newsList.appendChild(resultItem);
+                }
+
+                if (!resultsBySection[sectionName]) {
+                    resultsBySection[sectionName] = [];
+                }
+                
+                /* Evita duplicatas de links dentro da mesma seção */
+                const link = card.querySelector('a')?.getAttribute('href');
+                const isDuplicate = resultsBySection[sectionName].some(item => item.querySelector('a')?.getAttribute('href') === link);
+                
+                if (!isDuplicate) {
+                    resultsBySection[sectionName].push(card.cloneNode(true));
                 }
             }
         });
 
-        /* Exibe a grade da agenda se houver resultados de eventos */
-        if (hasAgenda) {
-            agendaList.style.display = 'grid';
-        }
+        /* Se houver resultados, renderiza-os agrupados por seção */
+        if (hasResults) {
+            /* Define a ordem das seções: Agenda Cultural (Eventos) sempre primeiro */
+            const sortedSections = Object.keys(resultsBySection).sort((a, b) => {
+                if (a === 'Agenda Cultural') return -1;
+                if (b === 'Agenda Cultural') return 1;
+                return a.localeCompare(b);
+            });
 
-        /* Gerencia a exibição da mensagem de "sem resultados" */
-        if (!hasResults) {
+            sortedSections.forEach(sectionName => {
+                const sectionGroup = document.createElement('div');
+                sectionGroup.className = 'search-group';
+                sectionGroup.style.marginBottom = '40px';
+                
+                const isAgenda = sectionName === 'Agenda Cultural';
+                
+                /* Layout do cabeçalho da seção dentro da busca */
+                sectionGroup.innerHTML = `
+                    <h3 style="font-size: 1.1rem; color: var(--laranja-sunset); text-transform: uppercase; margin-bottom: 20px; border-bottom: 2px solid var(--gray-light); padding-bottom: 8px; display: inline-block;">
+                        ${sectionName}
+                    </h3>
+                    <div class="group-content ${isAgenda ? 'agenda-grid' : ''}" style="${isAgenda ? '' : 'display: flex; flex-direction: column; gap: 20px;'}"></div>
+                `;
+                
+                const contentContainer = sectionGroup.querySelector('.group-content');
+                
+                resultsBySection[sectionName].forEach(item => {
+                    if (isAgenda) {
+                        /* Para Agenda, mantém o layout de cards original */
+                        item.style.display = 'flex';
+                        contentContainer.appendChild(item);
+                    } else {
+                        /* Para notícias, converte para o layout de lista horizontal (search-result-item) */
+                        const title = item.querySelector('h2, h3, h4, a')?.textContent || '';
+                        
+                        /* Prioriza dados de atributos 'data-' (caso de listas minimalistas) */
+                        let excerpt = item.getAttribute('data-excerpt') || item.querySelector('p:not(.agenda-info p)')?.textContent || '';
+                        let imgSrc = item.getAttribute('data-img');
+                        
+                        const category = item.querySelector('.category, .card-category')?.textContent || '';
+                        const link = item.querySelector('a')?.getAttribute('href') || '#';
+                        
+                        if (!imgSrc) {
+                            const imgEl = item.querySelector('img');
+                            if (imgEl) {
+                                imgSrc = imgEl.src;
+                            } else if (item.classList.contains('main-feature')) {
+                                /* Fallback para imagem de fundo do destaque principal */
+                                const style = window.getComputedStyle(item);
+                                const bg = style.backgroundImage;
+                                if (bg && bg !== 'none') {
+                                    const match = bg.match(/url\(['"]?(.*?)['"]?\)/);
+                                    if (match) imgSrc = match[1];
+                                }
+                            }
+                        }
+
+                        const resultItem = document.createElement('article');
+                        /* Adiciona classe no-image se não houver foto para layout adaptativo */
+                        resultItem.className = !imgSrc ? 'no-image' : '';
+                        
+                        resultItem.innerHTML = `
+                            <a href="${link}" class="search-result-item ${!imgSrc ? 'no-image' : ''}">
+                                <div class="result-img">
+                                    ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : ''}
+                                </div>
+                                <div class="result-content">
+                                    ${category ? `<span class="card-category" style="display: block; margin-bottom: 5px;">${category}</span>` : ''}
+                                    <h3 style="margin: 0 0 8px 0; color: var(--charcoal); line-height: 1.3;">${title}</h3>
+                                    ${excerpt ? `<p style="font-size: 0.95rem; color: #555; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${excerpt}</p>` : ''}
+                                </div>
+                            </a>
+                        `;
+                        contentContainer.appendChild(resultItem);
+                    }
+                });
+                
+                groupsContainer.appendChild(sectionGroup);
+            });
+            
+            noResultsMsg.style.display = 'none';
+            searchTitle.style.display = 'block';
+        } else {
+            /* Gerencia a exibição da mensagem de "sem resultados" */
             noResultsMsg.style.display = 'block';
             termDisplay.textContent = searchTerm;
             searchTitle.style.display = 'none';
-        } else {
-            noResultsMsg.style.display = 'none';
-            searchTitle.style.display = 'block';
         }
     };
 
