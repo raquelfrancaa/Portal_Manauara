@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSearch();
 });
 
-/* Implementa a lógica de busca funcional (filtro de cards) */
+/* Implementa a lógica de busca funcional com layout dinâmico */
 function initSearch() {
     /* Seleciona o campo de entrada de texto e o botão de busca */
     const searchInput = document.getElementById('search-input');
@@ -25,36 +25,138 @@ function initSearch() {
     /* Se o campo de busca não existir na página atual, interrompe a execução */
     if (!searchInput) return;
 
-    /* Função interna que executa a filtragem dos elementos */
+    /* Configuração do container de resultados dinâmicos */
+    const mainContainer = document.querySelector('main.container');
+    if (!mainContainer) return;
+
+    const searchResultsContainer = document.createElement('div');
+    searchResultsContainer.id = 'search-results-container';
+    searchResultsContainer.style.display = 'none';
+    searchResultsContainer.style.marginBottom = '40px';
+    
+    searchResultsContainer.innerHTML = `
+        <h2 class="section-title" id="search-title" style="margin-top: 20px;">Resultados da Busca</h2>
+        <div class="search-news-list" style="display: flex; flex-direction: column; gap: 20px;"></div>
+        <div class="search-agenda-list agenda-grid" style="margin-top: 30px; display: none;"></div>
+        <div id="no-results-msg" style="display: none; text-align: center; padding: 60px 20px; color: var(--charcoal);">
+            <p style="font-size: 1.5rem; margin-bottom: 10px;">🔍</p>
+            <p style="font-size: 1.2rem;">Nenhum resultado encontrado para "<strong><span id="search-term-display"></span></strong>".</p>
+            <p style="color: var(--gray-medium); margin-top: 10px;">Tente pesquisar por outros termos ou verifique a ortografia.</p>
+        </div>
+    `;
+    mainContainer.prepend(searchResultsContainer);
+
+    /* Função para capturar o conteúdo original da página que deve ser ocultado durante a busca */
+    const getOriginalContent = () => Array.from(mainContainer.children).filter(child => child !== searchResultsContainer);
+
+    /* Função interna que executa a filtragem e renderização dos resultados */
     const performSearch = () => {
-        /* Normaliza o termo de busca: minúsculas e sem espaços extras */
         const searchTerm = searchInput.value.toLowerCase().trim();
         
-        /* Seleciona todos os tipos de cards que podem ser filtrados no portal */
-        const cards = document.querySelectorAll('.news-card, .agenda-card, .article-item-cat, .featured-article-cat');
+        const newsList = searchResultsContainer.querySelector('.search-news-list');
+        const agendaList = searchResultsContainer.querySelector('.search-agenda-list');
+        const noResultsMsg = document.getElementById('no-results-msg');
+        const termDisplay = document.getElementById('search-term-display');
+        const searchTitle = document.getElementById('search-title');
+
+        /* Se a busca estiver vazia, restaura o layout original */
+        if (searchTerm === '') {
+            searchResultsContainer.style.display = 'none';
+            getOriginalContent().forEach(el => el.style.display = '');
+            return;
+        }
+
+        /* Oculta o conteúdo original e exibe o container de busca */
+        getOriginalContent().forEach(el => el.style.display = 'none');
+        searchResultsContainer.style.display = 'block';
+
+        /* Limpa resultados anteriores */
+        newsList.innerHTML = '';
+        agendaList.innerHTML = '';
+        agendaList.style.display = 'none';
+        
+        let hasResults = false;
+        let hasAgenda = false;
+
+        /* Seleciona todos os cards fontes de informação */
+        const cards = document.querySelectorAll('.news-card, .agenda-card, .article-item-cat, .featured-article-cat, .main-feature');
 
         cards.forEach(card => {
-            /* Captura todo o texto contido no card para comparação */
             const cardText = card.textContent.toLowerCase();
             
-            /* Se o termo de busca estiver presente no texto do card (ou se a busca estiver vazia) */
+            /* Se o termo de busca estiver presente no texto do card */
             if (cardText.includes(searchTerm)) {
-                /* Exibe o card. Se for da agenda, usa flex para manter o layout */
-                card.style.display = card.classList.contains('agenda-card') ? 'flex' : 'block';
-            } else {
-                /* Esconde o card que não corresponde à busca */
-                card.style.display = 'none';
+                hasResults = true;
+                
+                /* Tratamento especial para Agenda (mantém o estilo original) */
+                if (card.classList.contains('agenda-card')) {
+                    hasAgenda = true;
+                    const clone = card.cloneNode(true);
+                    clone.style.display = 'flex'; // Garante que o clone seja visível
+                    agendaList.appendChild(clone);
+                } else {
+                    /* Extração de dados para notícias (converte para lista horizontal) */
+                    const title = card.querySelector('h2, h3')?.textContent || '';
+                    const excerpt = card.querySelector('p:not(.agenda-info p)')?.textContent || '';
+                    const category = card.querySelector('.category, .card-category')?.textContent || '';
+                    const link = card.querySelector('a')?.getAttribute('href') || '#';
+                    
+                    let imgSrc = '';
+                    const imgEl = card.querySelector('img');
+                    if (imgEl) {
+                        imgSrc = imgEl.src;
+                    } else {
+                        /* Tenta extrair imagem de fundo (caso do main-feature) */
+                        const style = window.getComputedStyle(card);
+                        const bg = style.backgroundImage;
+                        if (bg && bg !== 'none') {
+                            const match = bg.match(/url\(['"]?(.*?)['"]?\)/);
+                            if (match) imgSrc = match[1];
+                        }
+                    }
+                    
+                    /* Cria o elemento de resultado no formato de lista horizontal */
+                    const resultItem = document.createElement('article');
+                    resultItem.innerHTML = `
+                        <a href="${link}" class="search-result-item">
+                            <div class="result-img">
+                                ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : '<div style="width: 100%; height: 100%; background: var(--gray-light);"></div>'}
+                            </div>
+                            <div class="result-content">
+                                ${category ? `<span class="card-category" style="display: block; margin-bottom: 5px;">${category}</span>` : ''}
+                                <h3 style="margin: 0 0 8px 0; color: var(--charcoal);">${title}</h3>
+                                <p style="font-size: 0.95rem; color: #555; margin: 0;">${excerpt}</p>
+                            </div>
+                        </a>
+                    `;
+                    newsList.appendChild(resultItem);
+                }
             }
         });
+
+        /* Exibe a grade da agenda se houver resultados de eventos */
+        if (hasAgenda) {
+            agendaList.style.display = 'grid';
+        }
+
+        /* Gerencia a exibição da mensagem de "sem resultados" */
+        if (!hasResults) {
+            noResultsMsg.style.display = 'block';
+            termDisplay.textContent = searchTerm;
+            searchTitle.style.display = 'none';
+        } else {
+            noResultsMsg.style.display = 'none';
+            searchTitle.style.display = 'block';
+        }
     };
 
-    /* Adiciona o evento de 'input' para busca em tempo real conforme o usuário digita */
+    /* Adiciona o evento de 'input' para busca em tempo real */
     searchInput.addEventListener('input', performSearch);
 
-    /* Adiciona o evento de clique no botão de lupa, caso ele exista */
+    /* Adiciona o evento de clique no botão de busca */
     if (searchBtn) {
         searchBtn.addEventListener('click', (e) => {
-            e.preventDefault(); // Evita comportamentos padrão de botões em forms
+            e.preventDefault();
             performSearch();
         });
     }

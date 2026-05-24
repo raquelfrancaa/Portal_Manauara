@@ -69,3 +69,46 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--white);
 }
 
+/* --- Sistema de Resultados de Busca --- */
+.search-result-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--gray-light);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+}
+
+.search-result-item:hover {
+    transform: translateY(-2px);
+}
+
+.search-result-item .result-img {
+    width: 100%;
+    height: 140px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.search-result-item .result-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.search-result-item:hover .result-img img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .search-result-item {
+        grid-template-columns: 1fr;
+    }
+    .search-result-item .result-img {
+        height: 200px;
+    }
+}
+
