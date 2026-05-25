@@ -101,27 +101,44 @@ async function fetchRiverLevel() {
 }
 
 /**
- * Simula a busca de status do trânsito nas principais vias de Manaus.
- * @returns {Promise} Objeto contendo o status geral e um ícone.
+ * Busca o status do trânsito a partir de um arquivo JSON local.
+ * Isso permite atualização manual simples no arquivo assets/data/traffic.json.
+ * @returns {Promise} Objeto contendo o status geral, ícone e data.
  */
 async function fetchTrafficStatus() {
-    /* Simula um pequeno atraso de rede */
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    /* Retorna dados simulados baseados em horários comerciais típicos */
-    const hour = new Date().getHours();
-    let status = 'Normal';
-    let icon = '🚗';
+    try {
+        /* Realiza a chamada para o arquivo JSON local que contém os dados do trânsito */
+        const response = await fetch('../assets/data/traffic.json');
+        
+        /* Se o arquivo não for encontrado na pasta assets (tentativa a partir da raiz) */
+        if (!response.ok) {
+            const rootResponse = await fetch('assets/data/traffic.json');
+            if (!rootResponse.ok) throw new Error('Dados de trânsito não encontrados');
+            const data = await rootResponse.json();
+            return {
+                status: data.status,
+                icon: data.icon,
+                date: data.last_update
+            };
+        }
 
-    if ((hour >= 7 && hour <= 9) || (hour >= 17 && hour <= 19)) {
-        status = 'Intenso';
-        icon = '🛑';
+        const data = await response.json();
+        
+        /* Retorna os dados formatados conforme a estrutura esperada pelo main.js */
+        return {
+            status: data.status,
+            icon: data.icon,
+            date: data.last_update
+        };
+    } catch (error) {
+        /* Caso o arquivo JSON falhe, retorna um valor fixo de segurança (Fallback) */
+        console.error('Erro ao ler arquivo de trânsito, usando fallback:', error);
+        return {
+            status: 'Indisponível',
+            icon: '⚠️',
+            date: 'N/A'
+        };
     }
-
-    return {
-        status: status,
-        icon: icon
-    };
 }
 
 
