@@ -1,0 +1,245 @@
+[
+    {
+        "id": "ubs-fluvial",
+        "category": "Saúde",
+        "title": "UBS Fluvial zarpa do porto de Manaus para atendimento de 15 dias nas comunidades do Rio Negro",
+        "subtitle": "Embarcação leva serviços médicos, odontológicos e vacinação para populações ribeirinhas.",
+        "image": "assets/img/Ubs_fluvial_rio_negro.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "fraude-japiim",
+        "category": "Segurança",
+        "title": "Polícia Civil desarticula central clandestina de fraudes eletrônicas no Japiim",
+        "subtitle": "Operação resultou na apreensão de equipamentos e prisão de suspeitos que aplicavam golpes bancários.",
+        "image": "assets/img/Fraude-eletronica-japiim.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "feira-cidade-nova",
+        "category": "Bairros",
+        "title": "Tradicional feira de artesanato e gastronomia movimenta o fim de semana na Cidade Nova",
+        "subtitle": "Evento reuniu moradores e empreendedores locais, aquecendo a economia da zona Norte.",
+        "image": "assets/img/Feira_cidade_nova.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "vacinacao-manaus",
+        "category": "Saúde",
+        "title": "Campanha de vacinação atinge meta em Manaus",
+        "subtitle": "Dados da Semsa mostram grande adesão da população no último final de semana.",
+        "image": "assets/img/Campanha_Vacinacao_Manaus_600_X_400.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "policia-centro",
+        "category": "Segurança",
+        "title": "Polícia reforça patrulhamento no Centro de Manaus",
+        "subtitle": "Operação visa diminuir pequenos furtos durante horário comercial.",
+        "image": "assets/img/Policia_patrulhamento_600_X_400.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "obras-jorge-teixeira",
+        "category": "Bairros",
+        "title": "Obras de revitalização avançam no bairro Jorge Teixeira",
+        "subtitle": "Prefeitura anuncia nova etapa de asfalto em áreas críticas da Zona Leste.",
+        "image": "assets/img/Obra_Bairro_Jorge_Teixeira_600_X_400.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "onibus-zona-norte",
+        "category": "Transporte",
+        "title": "Novas linhas de ônibus começam a operar na Zona Norte de Manaus",
+        "subtitle": "Medida visa reduzir o tempo de espera nos terminais de integração durante horários de pico.",
+        "image": "assets/img/Onibus_zona_norte.png",
+        "isFeatured": true,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "monitoramento-alvorada",
+        "category": "Segurança",
+        "title": "Câmeras de monitoramento auxiliam na prisão de suspeitos no bairro Alvorada",
+        "subtitle": "O sistema de vigilância flagrou a ação em tempo real, permitindo a chegada rápida da PM.",
+        "image": "assets/img/Camera_monitoramento_alvorada.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "limpeza-praca14",
+        "category": "Infraestrutura",
+        "title": "Bairro Praça 14 recebe mutirão de limpeza e iluminação",
+        "subtitle": "Ação faz parte do cronograma de manutenção dos bairros históricos da capital.",
+        "image": "assets/img/Limpeza_praca14.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "vacinacao-gripe",
+        "category": "Saúde",
+        "title": "UBSs ampliam horário de atendimento para vacinação contra gripe",
+        "subtitle": "Confira a lista das unidades que funcionarão até as 21h nesta semana.",
+        "image": "assets/img/Ubs_atendimento_vacinacao.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "eleicoes-2026",
+        "category": "Destaque",
+        "title": "Eleições 2026: A Disputa pelo Governo do Amazonas Toma Forma",
+        "subtitle": "Com a impossibilidade de reeleição de Wilson Lima, nomes tradicionais e novas apostas iniciam as movimentações para a corrida ao Palácio Rio Negro.",
+        "image": "assets/img/Eleicoes_2026_1200_X_600.png",
+        "isFeatured": true,
+        "section": "Política"
+    },
+    {
+        "id": "plano-diretor",
+        "category": "Política",
+        "title": "CMM debate novo plano diretor de Manaus nesta terça",
+        "subtitle": "Câmara Municipal de Manaus (CMM) reúne especialistas e sociedade civil para discutir diretrizes de crescimento urbano para a próxima década.",
+        "image": "assets/img/Camara_Municipal_Manaus_1200_X_600.png",
+        "isFeatured": false,
+        "section": "Política"
+    },
+    {
+        "id": "fundo-igarapes",
+        "category": "Câmara",
+        "title": "Câmara Municipal aprova criação de fundo especial para recuperação de igarapés em Manaus",
+        "subtitle": "Projeto visa destinar recursos específicos para desassoreamento e limpeza das bacias hidrográficas da capital.",
+        "image": "assets/img/Recuperacao_igarapes.png",
+        "isFeatured": false,
+        "section": "Política"
+    },
+    {
+        "id": "logistica-tre",
+        "category": "Eleições",
+        "title": "TRE-AM define plano logístico para o envio de urnas eletrônicas às comunidades ribeirinhas de Manaus",
+        "subtitle": "Operação envolve embarcações e aeronaves para garantir o exercício da democracia em áreas de difícil acesso.",
+        "image": "assets/img/Envio_urna_comunidade.png",
+        "isFeatured": false,
+        "section": "Política"
+    },
+    {
+        "id": "flutuantes-taruma",
+        "category": "Guia Manaus",
+        "title": "5 Melhores flutuantes para visitar no Tarumã",
+        "subtitle": "O Rio Tarumã-Açu é o refúgio favorito dos manauaras. Confira nossa seleção dos melhores picos para banho.",
+        "image": "assets/img/flutuantes_taruma_1200_X_600.png",
+        "isFeatured": true,
+        "section": "Guia Manaus"
+    },
+    {
+        "id": "porao-alemao",
+        "category": "Shows",
+        "title": "Show: Porão do Alemão Rock Bar",
+        "subtitle": "Um dos palcos mais tradicionais do rock em Manaus recebe atrações locais neste fim de semana.",
+        "image": "assets/img/Porao_do_Alemao.png",
+        "isFeatured": false,
+        "section": "Cultura"
+    },
+    {
+        "id": "roteiro-x-caboquinho",
+        "category": "Gastronomia",
+        "title": "Roteiro gastronômico: Onde comer o melhor X-Caboquinho",
+        "subtitle": "O sanduíche mais famoso da capital amazonense ganha um roteiro especial, do Mercado Central aos cafés tradicionais dos bairros.",
+        "image": "assets/img/Melhor_x-caboquinho.png",
+        "isFeatured": false,
+        "section": "Guia Manaus"
+    },
+    {
+        "id": "musa-visita",
+        "category": "Turismo",
+        "title": "Como visitar o MUSA e ver a floresta acima da copa das árvores em Manaus",
+        "subtitle": "O Museu da Amazônia oferece uma experiência única com sua torre de 42 metros e trilhas guiadas.",
+        "image": "assets/img/Musa.png",
+        "isFeatured": false,
+        "section": "Guia Manaus"
+    },
+    {
+        "id": "praia-lua",
+        "category": "Lazer",
+        "title": "Praia da Lua: Como chegar ao refúgio de areias brancas e águas calmas do Rio Negro",
+        "subtitle": "Localizada à margem esquerda do Rio Negro, a praia é um dos destinos favoritos dos manauaras durante a vazante.",
+        "image": "assets/img/Praia_lua.png",
+        "isFeatured": false,
+        "section": "Guia Manaus"
+    },
+    {
+        "id": "opera-teatro",
+        "category": "Teatro",
+        "title": "Ópera no Teatro Amazonas",
+        "subtitle": "Apresentação especial da orquestra filarmônica no Largo de São Sebastião.",
+        "image": "assets/img/Teatro_Amazonas_1200_X_600.png",
+        "isFeatured": true,
+        "section": "Cultura"
+    },
+    {
+        "id": "circuito-tambaqui",
+        "category": "Gastronomia",
+        "title": "Circuito do Tambaqui no Mercado Adolpho Lisboa",
+        "subtitle": "Festival gastronômico reúne os melhores chefs locais preparando pratos com o peixe tradicional da região.",
+        "image": "assets/img/Circuito_Tambaqui_1200_X_600.png",
+        "isFeatured": false,
+        "section": "Cultura"
+    },
+    {
+        "id": "festival-folclorico",
+        "category": "Danças",
+        "title": "Com mais de 60 grupos, Festival Folclórico do Amazonas inicia temporada de danças na Bola do Suframa",
+        "subtitle": "Evento tradicional reúne quadrilhas, cirandas e cangaços em um mês de celebração da cultura popular.",
+        "image": "assets/img/Festival_folclorico.png",
+        "isFeatured": false,
+        "section": "Cultura"
+    },
+    {
+        "id": "fibra-optica",
+        "category": "Utilidade",
+        "title": "Rompimento de fibra óptica deixa Manaus com internet lenta e instável nesta noite",
+        "subtitle": "Equipes técnicas trabalham na manutenção do cabo submarino que abastece a região norte.",
+        "image": "assets/img/Fibra_optica.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "ponte-interditada",
+        "category": "Trânsito",
+        "title": "Carreta quebrada interdita totalmente a Ponte Rio Negro e causa quilômetros de retenção",
+        "subtitle": "O incidente ocorreu no sentido Iranduba-Manaus, bloqueando o fluxo de veículos em ambos os sentidos.",
+        "image": "assets/img/Ponte_interditada.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "vagas-honda",
+        "category": "Economia",
+        "title": "Distrito Industrial em expansão: Moto Honda anuncia nova linha de montagem e abre seleção para 300 vagas de emprego imediato em Manaus",
+        "subtitle": "A fabricante japonesa amplia sua capacidade produtiva no PIM e busca profissionais para diversas áreas técnicas e operacionais.",
+        "image": "assets/img/Honda.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    },
+    {
+        "id": "coldplay-manaus",
+        "category": "Música",
+        "title": "Turnê na Amazônia: Coldplay confirma show histórico na Arena da Amazônia e ingressos esgotam em menos de duas horas",
+        "subtitle": "A banda britânica traz a aclamada 'Music of the Spheres World Tour' para a capital amazonense, prometendo um espetáculo de sustentabilidade e tecnologia.",
+        "image": "assets/img/Coldplay_mao.png",
+        "isFeatured": false,
+        "section": "Cultura"
+    },
+    {
+        "id": "amazonas-fc-serie-a",
+        "category": "Esportes",
+        "title": "Histórico! Amazonas FC vence na Arena lotada e garante acesso inédito para a Série A do Brasileirão",
+        "subtitle": "A Onça-Pintada faz história ao se tornar o primeiro clube amazonense na elite do futebol nacional na era dos pontos corridos.",
+        "image": "assets/img/Amazonas_FC.png",
+        "isFeatured": false,
+        "section": "Cotidiano"
+    }
+]

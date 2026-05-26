@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!-- Define o tipo do documento como HTML5 e o idioma como Português do Brasil -->
+<html lang="pt-br">
+<head>
+    <!-- Define a codificação de caracteres para suportar acentos e símbolos -->
+    <meta charset="UTF-8">
+    <!-- Configura a visualização para dispositivos móveis (Responsividade) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Título da página de categoria -->
+    <title>Cultura - Portal Manauara</title>
+    
+    <!-- Importação de fontes do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Links para os arquivos de estilo CSS externos (Caminhos relativos saindo da pasta /pages) -->
+    <link rel="stylesheet" href="../assets/css/variables.css">      <!-- Definição de cores e espaçamentos -->
+    <link rel="stylesheet" href="../assets/css/reset.css">          <!-- Reseta estilos padrão dos navegadores -->
+    <link rel="stylesheet" href="../assets/css/global.css">         <!-- Estilos globais do portal -->
+    <link rel="stylesheet" href="../assets/css/header.css">         <!-- Estilos específicos do cabeçalho -->
+    <link rel="stylesheet" href="../assets/css/home.css">           <!-- Reutiliza grid de notícias da home se necessário -->
+    <link rel="stylesheet" href="../assets/css/footer.css">         <!-- Estilos específicos do rodapé -->
+    <link rel="stylesheet" href="../assets/css/pages/categoria.css"> <!-- Estilos exclusivos desta página -->
+    <link rel="stylesheet" href="../assets/css/social-share.css"> <!-- Estilos dos botões de compartilhamento -->
+    </head>
+<body>
+
+    <!-- Início do Cabeçalho Principal -->
+    <header id="main-header">
+        <!-- Barra superior com widgets dinâmicos -->
+        <div class="top-bar">
+            <div class="container">
+                <div class="utility-info">
+                    <!-- IDs configurados para serem preenchidos pelo api.js/main.js -->
+                    <span id="weather-widget">Carregando clima...</span>
+                    <span id="river-level-widget">Rio Negro: Carregando...</span>
+                    <span id="traffic-widget">Trânsito: Carregando...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Navegação -->
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-content">
+                    <!-- Logotipo com link para voltar à Home -->
+                    <a href="../index.html" class="logo">
+                        <h1>Portal <span>Manauara</span></h1>
+                    </a>
+                    
+                    <!-- Menu de Editorias -->
+                    <ul class="nav-menu">
+                        <li><a href="cotidiano.html">Cotidiano</a></li>
+                        <li><a href="politica.html">Política</a></li>
+                        <li><a href="guia-manaus.html">Guia Manaus</a></li>
+                        <li><a href="cultura.html" class="active">Cultura</a></li>
+                    </ul>
+
+                    <!-- Ações à direita (Busca, Botão de WhatsApp e Menu Mobile) -->
+                    <div class="nav-actions">
+                        <!-- Formulário de busca rápida -->
+                        <div class="search-container">
+                            <input type="text" id="search-input" placeholder="Buscar notícias...">
+                            <button id="search-btn">🔍</button>
+                        </div>
+                        <!-- Botão direto para WhatsApp do Repórter Manauara -->
+                        <a href="https://wa.me/5592999999999" target="_blank" class="btn btn-accent btn-sm">Repórter Manauara</a>
+                        <!-- Botão que aparece apenas em celulares para abrir o menu -->
+                        <button class="mobile-toggle" aria-label="Abrir Menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal da Página de Categoria -->
+    <main class="container">
+        <!-- Cabeçalho da Seção indicando em qual categoria o usuário está -->
+        <header class="category-header">
+            <h1>Cultura</h1>
+        </header>
+
+        <!-- Layout em Grid: Conteúdo principal à esquerda e Sidebar à direita -->
+        <div class="category-grid">
+            <section class="main-content-cat">
+                <!-- Artigo de Destaque da Categoria -->
+                <div data-component="news-section" data-type="featured" data-category="Cultura" data-featured-only></div>
+
+                <!-- Lista vertical de outras notícias da categoria -->
+                <div class="article-list-cat" data-component="news-section" data-type="list" data-category="Cultura">
+                    <!-- Injetado dinamicamente via NewsCard.js -->
+                </div>
+            </section>
+
+            <!-- Barra Lateral da Categoria -->
+            <aside class="sidebar-cat">
+                <!-- Seção de notícias populares -->
+                <h3 class="sidebar-title">Mais Lidas</h3>
+                <ul class="news-list">
+                    <li><a href="noticia-interna.html?id=amazonas-fc-serie-a">Amazonas FC garante acesso inédito para a Série A</a></li>
+                    <li><a href="noticia-interna.html?id=coldplay-manaus">Coldplay confirma show histórico na Arena da Amazônia</a></li>
+                    <li><a href="noticia-interna.html?id=vagas-honda">Moto Honda abre seleção para 300 vagas de emprego imediato em Manaus</a></li>
+                </ul>
+
+                <!-- Banner lateral para chamadas de pauta -->
+                <div style="background: var(--verde-manaus); color: white; padding: 20px; margin-top: 30px; border-radius: 8px;">
+                    <h3>Repórter Manauara</h3>
+                    <p>Viu algo na sua rua? Envie fotos e vídeos para o nosso WhatsApp.</p>
+                    <a href="https://wa.me/5592999999999" target="_blank" class="btn btn-accent" style="margin-top: 10px; display: block;">Enviar Pauta</a>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Rodapé Padrão -->
+    <footer id="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Portal Manauara. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Importação de Scripts para manter interatividade -->
+    <script src="../assets/js/api.js"></script>
+    <script src="../components/NewsCard.js"></script>
+    <script src="../assets/js/news-renderer.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/menu.js"></script>
+    <script src="../assets/js/social-share.js"></script> <!-- Sistema de compartilhamento social -->
+</body>
+</html>

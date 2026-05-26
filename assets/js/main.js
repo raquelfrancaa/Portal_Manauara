@@ -49,7 +49,7 @@ function initSearch() {
     const getOriginalContent = () => Array.from(mainContainer.children).filter(child => child !== searchResultsContainer);
 
     /* Função interna que executa a filtragem, agrupamento e renderização dos resultados */
-    const performSearch = () => {
+    const performSearch = async () => {
         const searchTerm = searchInput.value.toLowerCase().trim();
         const groupsContainer = document.getElementById('search-groups-container');
         const noResultsMsg = document.getElementById('no-results-msg');
@@ -70,141 +70,99 @@ function initSearch() {
         /* Limpa resultados anteriores */
         groupsContainer.innerHTML = '';
         
-        /* Seleciona todos os elementos que podem conter informações pesquisáveis */
-        const cards = document.querySelectorAll('.news-card, .agenda-card, .article-item-cat, .featured-article-cat, .main-feature, .list-news-minimal li, .news-list li');
-        
-        const resultsBySection = {};
-        let hasResults = false;
-
-        cards.forEach(card => {
-            const text = card.textContent.toLowerCase();
+        try {
+            /* Determina o caminho base para o JSON e imagens */
+            const isPage = window.location.pathname.includes('/pages/');
+            const jsonPath = isPage ? '../assets/data/news.json' : 'assets/data/news.json';
+            const basePath = isPage ? '../' : '';
             
-            /* Se o termo de busca estiver presente no texto do elemento */
-            if (text.includes(searchTerm)) {
-                hasResults = true;
+            const response = await fetch(jsonPath);
+            if (!response.ok) throw new Error('Falha ao carregar notícias para busca');
+            const allNews = await response.json();
+            
+            const resultsBySection = {};
+            let hasResults = false;
+
+            /* Filtra todas as notícias do JSON com base no termo */
+            allNews.forEach(item => {
+                const searchableText = `${item.title} ${item.subtitle} ${item.category} ${item.section}`.toLowerCase();
                 
-                /* Determina a qual seção este resultado pertence para agrupamento */
-                let sectionName = 'Geral';
-                const sectionParent = card.closest('section, aside, .main-content-cat, #hero');
-                
-                if (sectionParent) {
-                    if (sectionParent.id === 'agenda') {
-                        sectionName = 'Agenda Cultural';
-                    } else if (sectionParent.id === 'hero') {
-                        sectionName = 'Destaques';
-                    } else {
-                        /* Tenta pegar o título da seção de forma dinâmica */
-                        const titleEl = sectionParent.querySelector('.section-title, .sidebar-title, h1, h2, h3');
-                        if (titleEl) sectionName = titleEl.textContent.trim();
+                if (searchableText.includes(searchTerm)) {
+                    hasResults = true;
+                    const sectionName = item.section || 'Geral';
+                    
+                    if (!resultsBySection[sectionName]) {
+                        resultsBySection[sectionName] = [];
                     }
+                    resultsBySection[sectionName].push(item);
                 }
-
-                if (!resultsBySection[sectionName]) {
-                    resultsBySection[sectionName] = [];
-                }
-                
-                /* Evita duplicatas de links dentro da mesma seção */
-                const link = card.querySelector('a')?.getAttribute('href');
-                const isDuplicate = resultsBySection[sectionName].some(item => item.querySelector('a')?.getAttribute('href') === link);
-                
-                if (!isDuplicate) {
-                    resultsBySection[sectionName].push(card.cloneNode(true));
-                }
-            }
-        });
-
-        /* Se houver resultados, renderiza-os agrupados por seção */
-        if (hasResults) {
-            /* Define a ordem das seções: Agenda Cultural (Eventos) sempre primeiro */
-            const sortedSections = Object.keys(resultsBySection).sort((a, b) => {
-                if (a === 'Agenda Cultural') return -1;
-                if (b === 'Agenda Cultural') return 1;
-                return a.localeCompare(b);
             });
 
-            sortedSections.forEach(sectionName => {
-                const sectionGroup = document.createElement('div');
-                sectionGroup.className = 'search-group';
-                sectionGroup.style.marginBottom = '40px';
-                
-                const isAgenda = sectionName === 'Agenda Cultural';
-                
-                /* Layout do cabeçalho da seção dentro da busca */
-                sectionGroup.innerHTML = `
-                    <h3 style="font-size: 1.1rem; color: var(--laranja-sunset); text-transform: uppercase; margin-bottom: 20px; border-bottom: 2px solid var(--gray-light); padding-bottom: 8px; display: inline-block;">
-                        ${sectionName}
-                    </h3>
-                    <div class="group-content ${isAgenda ? 'agenda-grid' : ''}" style="${isAgenda ? '' : 'display: flex; flex-direction: column; gap: 20px;'}"></div>
-                `;
-                
-                const contentContainer = sectionGroup.querySelector('.group-content');
-                
-                resultsBySection[sectionName].forEach(item => {
-                    if (isAgenda) {
-                        /* Para Agenda, mantém o layout de cards original */
-                        item.style.display = 'flex';
-                        contentContainer.appendChild(item);
-                    } else {
-                        /* Para notícias, converte para o layout de lista horizontal (search-result-item) */
-                        const title = item.querySelector('h2, h3, h4, a')?.textContent || '';
-                        
-                        /* Prioriza dados de atributos 'data-' (caso de listas minimalistas) */
-                        let excerpt = item.getAttribute('data-excerpt') || item.querySelector('p:not(.agenda-info p)')?.textContent || '';
-                        let imgSrc = item.getAttribute('data-img');
-                        
-                        const category = item.querySelector('.category, .card-category')?.textContent || '';
-                        const link = item.querySelector('a')?.getAttribute('href') || '#';
-                        
-                        if (!imgSrc) {
-                            const imgEl = item.querySelector('img');
-                            if (imgEl) {
-                                imgSrc = imgEl.src;
-                            } else if (item.classList.contains('main-feature')) {
-                                /* Fallback para imagem de fundo do destaque principal */
-                                const style = window.getComputedStyle(item);
-                                const bg = style.backgroundImage;
-                                if (bg && bg !== 'none') {
-                                    const match = bg.match(/url\(['"]?(.*?)['"]?\)/);
-                                    if (match) imgSrc = match[1];
-                                }
-                            }
-                        }
+            /* Se houver resultados, renderiza-os agrupados por seção */
+            if (hasResults) {
+                /* Ordena as seções para exibição */
+                const sortedSections = Object.keys(resultsBySection).sort();
 
-                        const resultItem = document.createElement('article');
-                        /* Adiciona classe no-image se não houver foto para layout adaptativo */
-                        resultItem.className = !imgSrc ? 'no-image' : '';
+                for (const sectionName of sortedSections) {
+                    const sectionGroup = document.createElement('div');
+                    sectionGroup.className = 'search-group';
+                    sectionGroup.style.marginBottom = '40px';
+                    
+                    sectionGroup.innerHTML = `
+                        <h3 style="font-size: 1.1rem; color: var(--laranja-sunset); text-transform: uppercase; margin-bottom: 20px; border-bottom: 2px solid var(--gray-light); padding-bottom: 8px; display: inline-block;">
+                            ${sectionName}
+                        </h3>
+                        <div class="group-content" style="display: flex; flex-direction: column; gap: 20px;"></div>
+                    `;
+                    
+                    const contentContainer = sectionGroup.querySelector('.group-content');
+                    groupsContainer.appendChild(sectionGroup);
+                    
+                    /* Renderiza cada item encontrado usando a estrutura padrão de resultados */
+                    resultsBySection[sectionName].forEach(item => {
+                        const link = isPage ? `noticia-interna.html?id=${item.id}` : `pages/noticia-interna.html?id=${item.id}`;
+                        const imgSrc = `${basePath}${item.image}`;
                         
+                        const resultItem = document.createElement('article');
                         resultItem.innerHTML = `
-                            <a href="${link}" class="search-result-item ${!imgSrc ? 'no-image' : ''}">
+                            <a href="${link}" class="search-result-item">
                                 <div class="result-img">
-                                    ${imgSrc ? `<img src="${imgSrc}" alt="${title}">` : ''}
+                                    <img src="${imgSrc}" alt="${item.title}">
                                 </div>
                                 <div class="result-content">
-                                    ${category ? `<span class="card-category" style="display: block; margin-bottom: 5px;">${category}</span>` : ''}
-                                    <h3 style="margin: 0 0 8px 0; color: var(--charcoal); line-height: 1.3;">${title}</h3>
-                                    ${excerpt ? `<p style="font-size: 0.95rem; color: #555; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${excerpt}</p>` : ''}
+                                    <span class="card-category" style="display: block; margin-bottom: 5px;">${item.category}</span>
+                                    <h3 style="margin: 0 0 8px 0; color: var(--charcoal); line-height: 1.3;">${item.title}</h3>
+                                    <p style="font-size: 0.95rem; color: #555; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.subtitle}</p>
                                 </div>
                             </a>
                         `;
                         contentContainer.appendChild(resultItem);
-                    }
-                });
+                    });
+                }
                 
-                groupsContainer.appendChild(sectionGroup);
-            });
-            
-            noResultsMsg.style.display = 'none';
-            searchTitle.style.display = 'block';
-        } else {
-            /* Gerencia a exibição da mensagem de "sem resultados" */
+                noResultsMsg.style.display = 'none';
+                searchTitle.style.display = 'block';
+            } else {
+                /* Gerencia a exibição da mensagem de "sem resultados" */
+                noResultsMsg.style.display = 'block';
+                termDisplay.textContent = searchTerm;
+                searchTitle.style.display = 'none';
+            }
+
+        } catch (error) {
+            console.error('Erro na busca global:', error);
             noResultsMsg.style.display = 'block';
             termDisplay.textContent = searchTerm;
-            searchTitle.style.display = 'none';
         }
     };
 
-    /* Adiciona o evento de 'input' para busca em tempo real */
-    searchInput.addEventListener('input', performSearch);
+    /* Adiciona o evento de 'keydown' para busca ao apertar Enter */
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            performSearch();
+        }
+    });
 
     /* Adiciona o evento de clique no botão de busca */
     if (searchBtn) {

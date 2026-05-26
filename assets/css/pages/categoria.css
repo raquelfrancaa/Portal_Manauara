@@ -72,27 +72,34 @@
 
 /* Item individual da lista de notícias (Notícia menor) */
 .article-item-cat {
-    /* Organiza em grid: Imagem pequena (200px) e Texto (Restante) */
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    /* Espaço entre imagem e texto */
-    gap: var(--spacing-md);
     /* Espaço interno na base */
     padding-bottom: var(--spacing-md);
     /* Linha divisória fina entre as notícias */
     border-bottom: 1px solid var(--gray-light);
 }
 
-/* Imagem pequena das notícias da lista */
-.article-item-cat img {
-    /* Ocupa toda a largura da sua coluna (200px) */
+/* Garante que o grid de duas colunas (200px 1fr) funcione mesmo com o <a> interno */
+.article-item-cat a {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--spacing-md);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Imagem pequena das notícias da lista - Ajuste para o container .card-img */
+.article-item-cat .card-img {
     width: 100%;
-    /* Altura proporcional menor */
     height: 140px;
-    /* Garante o preenchimento correto sem distorção */
     object-fit: cover;
-    /* Arredonda os cantos */
     border-radius: 4px;
+    overflow: hidden;
+}
+
+.article-item-cat .card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Título das seções da barra lateral (Sidebar) */
